@@ -2,17 +2,15 @@ BoardGameTecGeronto
 
 Um jogo de tabuleiro voltado a pesquisa referente a saúde do idoso.
 
-Começando:
 
-Para executar o projeto, será necessário instalar os seguintes programas:
+Commit e pull Requests:
+-Todas as features devem ser commitadas na branch develop, antes de entrar na master.
+-Todas as novas criacoes devem ter sua propria branch a partir da develop
+-criad branches seguindo os seguintes formatos ou similar: 
+    "feture/..."
+    "tool/..."
+    "fix/..."
+    
 
--WINRAR ou 7ZIP
-
-Para descompactar os arquivos do Jogo.
-
-Desenvolvimento:
-
-Para iniciar o desenvolvimento, é necessário clonar o projeto do GitHub num diretório de sua preferência:
-
-cd "diretorio de sua preferencia"
-git clone https://github.com/DCarrijo/BoardGameTecGeronto
+Programa:
+- Unity3D, versao 2019.3
