@@ -37,9 +37,7 @@ MonoBehaviour:
     - {fileID: 8926484042661614623}
     - {fileID: 8926484042661614634}
     - {fileID: 8926484042661614647}
-  - title: 'Rocket Trail
-
-'
+  - title: Rocket Trail
     position:
       serializedVersion: 2
       x: 0
@@ -7130,7 +7128,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614718}
   - {fileID: 8926484042661614720}
   - {fileID: 8926484042661614721}
-  m_UIPosition: {x: 1444, y: 1113}
+  m_UIPosition: {x: 1442, y: 1040}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -7512,7 +7510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1445, y: 1600}
+  m_UIPosition: {x: 1443, y: 1527}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -7549,7 +7547,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614711}
   - {fileID: 8926484042661614724}
   - {fileID: 8926484042661614729}
-  m_UIPosition: {x: 1452, y: 1772}
+  m_UIPosition: {x: 1450, y: 1699}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:

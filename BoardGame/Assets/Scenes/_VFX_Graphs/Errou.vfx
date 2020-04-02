@@ -15,7 +15,7 @@ MonoBehaviour:
   groupInfos: []
   stickyNoteInfos: []
   systemInfos:
-  - title: Circle
+  - title: CircleOut
     position:
       serializedVersion: 2
       x: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
     - {fileID: 8926484042661614558}
     - {fileID: 8926484042661614583}
     - {fileID: 8926484042661614585}
-  - title: Errou
+  - title: Error
     position:
       serializedVersion: 2
       x: 0
@@ -71,10 +71,10 @@ MonoBehaviour:
   categories: []
   uiBounds:
     serializedVersion: 2
-    x: 702
-    y: -135
-    width: 3236
-    height: 1779
+    x: 684
+    y: -153
+    width: 2731
+    height: 1797
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,104 +115,14 @@ MonoBehaviour:
   - {fileID: 8926484042661615681}
   - {fileID: 8926484042661615707}
   - {fileID: 8926484042661615709}
+  - {fileID: 8926484042661615711}
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_UIInfos: {fileID: 114340500867371532}
   m_ParameterInfo:
-  - name: LifeTimeCircle
-    path: LifeTimeCircle
-    tooltip: 
-    sheetType: m_Float
-    realType: Single
-    defaultValue:
-      m_Type:
-        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
-    min: -Infinity
-    max: Infinity
-    descendantCount: 0
-  - name: SizeOverLifeTimeCircle
-    path: SizeOverLifeTimeCircle
-    tooltip: 
-    sheetType: m_AnimationCurve
-    realType: AnimationCurve
-    defaultValue:
-      m_Type:
-        m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.25,"value":0.25,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
-    min: -Infinity
-    max: Infinity
-    descendantCount: 0
-  - name: SizeOverLifeTimeCircle2
-    path: SizeOverLifeTimeCircle2
-    tooltip: 
-    sheetType: m_AnimationCurve
-    realType: AnimationCurve
-    defaultValue:
-      m_Type:
-        m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.25,"value":0.25,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
-    min: -Infinity
-    max: Infinity
-    descendantCount: 0
-  - name: GradientColorCircle
-    path: GradientColorCircle
-    tooltip: 
-    sheetType: m_Gradient
-    realType: Gradient
-    defaultValue:
-      m_Type:
-        m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":0.0},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
-    min: -Infinity
-    max: Infinity
-    descendantCount: 0
-  - name: LifeTimeBook
-    path: LifeTimeBook
-    tooltip: 
-    sheetType: m_Float
-    realType: Single
-    defaultValue:
-      m_Type:
-        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
-    min: -Infinity
-    max: Infinity
-    descendantCount: 0
-  - name: SizeOverLifeTimeBook
-    path: SizeOverLifeTimeBook
-    tooltip: 
-    sheetType: m_AnimationCurve
-    realType: AnimationCurve
-    defaultValue:
-      m_Type:
-        m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.25,"value":0.25,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
-    min: -Infinity
-    max: Infinity
-    descendantCount: 0
-  - name: GradientColorBook
-    path: GradientColorBook
-    tooltip: 
-    sheetType: m_Gradient
-    realType: Gradient
-    defaultValue:
-      m_Type:
-        m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":0.0},{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":0.6000000238418579},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.7843137383460999,"time":0.6000000238418579},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
-    min: -Infinity
-    max: Infinity
-    descendantCount: 0
-  - name: LifeTimeInterrogation
-    path: LifeTimeInterrogation
+  - name: LifeTimeAllCircles
+    path: LifeTimeAllCircles
     tooltip: 
     sheetType: m_Float
     realType: Single
@@ -224,8 +134,8 @@ MonoBehaviour:
     min: -Infinity
     max: Infinity
     descendantCount: 0
-  - name: SizeOverLifeTimeInterrogation
-    path: SizeOverLifeTimeInterrogation
+  - name: SizeOverLifeTimeCircleOut
+    path: SizeOverLifeTimeCircleOut
     tooltip: 
     sheetType: m_AnimationCurve
     realType: AnimationCurve
@@ -237,8 +147,112 @@ MonoBehaviour:
     min: -Infinity
     max: Infinity
     descendantCount: 0
-  - name: GradientColorInterrogation
-    path: GradientColorInterrogation
+  - name: SizeOverLifeTimeCircleIn
+    path: SizeOverLifeTimeCircleIn
+    tooltip: 
+    sheetType: m_AnimationCurve
+    realType: AnimationCurve
+    defaultValue:
+      m_Type:
+        m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.25,"value":0.25,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+    min: -Infinity
+    max: Infinity
+    descendantCount: 0
+  - name: GradientColorAllCircles
+    path: GradientColorAllCircles
+    tooltip: 
+    sheetType: m_Gradient
+    realType: Gradient
+    defaultValue:
+      m_Type:
+        m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":0.0},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+    min: -Infinity
+    max: Infinity
+    descendantCount: 0
+  - name: LifeTimeError
+    path: LifeTimeError
+    tooltip: 
+    sheetType: m_Float
+    realType: Single
+    defaultValue:
+      m_Type:
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      m_SerializableObject: 2.5
+    min: -Infinity
+    max: Infinity
+    descendantCount: 0
+  - name: AddVelocityError
+    path: AddVelocityError
+    tooltip: 
+    sheetType: m_Float
+    realType: Single
+    defaultValue:
+      m_Type:
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      m_SerializableObject: 0.6
+    min: -Infinity
+    max: Infinity
+    descendantCount: 0
+  - name: SizeOverLifeTimError
+    path: SizeOverLifeTimError
+    tooltip: 
+    sheetType: m_AnimationCurve
+    realType: AnimationCurve
+    defaultValue:
+      m_Type:
+        m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.25,"value":0.25,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+    min: -Infinity
+    max: Infinity
+    descendantCount: 0
+  - name: GradientColorError
+    path: GradientColorError
+    tooltip: 
+    sheetType: m_Gradient
+    realType: Gradient
+    defaultValue:
+      m_Type:
+        m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":0.0},{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":0.6000000238418579},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.7843137383460999,"time":0.6000000238418579},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+    min: -Infinity
+    max: Infinity
+    descendantCount: 0
+  - name: LifeTimeX
+    path: LifeTimeX
+    tooltip: 
+    sheetType: m_Float
+    realType: Single
+    defaultValue:
+      m_Type:
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      m_SerializableObject: 2.5
+    min: -Infinity
+    max: Infinity
+    descendantCount: 0
+  - name: SizeOverLifeTimeX
+    path: SizeOverLifeTimeX
+    tooltip: 
+    sheetType: m_AnimationCurve
+    realType: AnimationCurve
+    defaultValue:
+      m_Type:
+        m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.25,"value":0.25,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+    min: -Infinity
+    max: Infinity
+    descendantCount: 0
+  - name: GradientColorX
+    path: GradientColorX
     tooltip: 
     sheetType: m_Gradient
     realType: Gradient
@@ -264,7 +278,7 @@ VisualEffectResource:
   m_Graph: {fileID: 114350483966674976}
   m_ShaderSources:
   - compute: 1
-    name: '[Circle]Initialize Particle'
+    name: '[CircleOut]Initialize Particle'
     source: "#pragma kernel CSMain\r\n#define NB_THREADS_PER_GROUP 64\n#define HAS_ATTRIBUTES
       1\n#define VFX_PASSDEPTH_ACTUAL (0)\n#define VFX_PASSDEPTH_MOTION_VECTOR (1)\n#define
       VFX_PASSDEPTH_SELECTION (2)\n#define VFX_USE_LIFETIME_CURRENT 1\n#define VFX_USE_POSITION_CURRENT
@@ -345,7 +359,7 @@ VisualEffectResource:
       attributeBuffer.Store((index * 0x2 + 0x15) << 2,asuint(attributes.age));\n           
       \n\r\n        }\r\n    }\r\n}\r\n"
   - compute: 1
-    name: '[Circle]Update Particle'
+    name: '[CircleOut]Update Particle'
     source: "#pragma kernel CSMain\r\n#define NB_THREADS_PER_GROUP 64\n#define HAS_ATTRIBUTES
       1\n#define VFX_PASSDEPTH_ACTUAL (0)\n#define VFX_PASSDEPTH_MOTION_VECTOR (1)\n#define
       VFX_PASSDEPTH_SELECTION (2)\n#define VFX_USE_LIFETIME_CURRENT 1\n#define VFX_USE_EVENTCOUNT_CURRENT
@@ -423,8 +437,8 @@ VisualEffectResource:
       uint indirectIndex = indirectBuffer.IncrementCounter();\r\n\t\tindirectBuffer[indirectIndex]
       = index;\r\n#endif\r\n#endif\r\n\t}\r\n}\r\n"
   - compute: 0
-    name: '[Circle]Output Particle Quad'
-    source: "Shader \"Hidden/VFX/Errou/Circle/Output Particle Quad\"\n{\r\n\tSubShader\r\n\t{\t\r\n\t\tCull
+    name: '[CircleOut]Output Particle Quad'
+    source: "Shader \"Hidden/VFX/Errou/CircleOut/Output Particle Quad\"\n{\r\n\tSubShader\r\n\t{\t\r\n\t\tCull
       Off\r\n\t\t\r\n\t\tTags { \"Queue\"=\"Transparent\" \"IgnoreProjector\"=\"True\"
       \"RenderType\"=\"Transparent\" }\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\tBlend
       SrcAlpha One\n\t\tZTest LEqual\n\t\tZWrite Off\n\t\tCull Off\n\t\t\n\t\n\t\t\t\n\t\tHLSLINCLUDE\n\t\t\n\t\t#define
@@ -887,7 +901,7 @@ VisualEffectResource:
       o.outMotionVector.a = o.color.a < i.VFX_VARYING_ALPHATHRESHOLD ? 0.0f : 1.0f;
       //Independant clipping for motion vector pass\n\t\t#endif\n\t\t\t\treturn o;\n\t\t\t}\n\t\t\tENDHLSL\n\t\t}\n\t\t\n\r\n\t\t\r\n\t}\r\n}\r\n"
   - compute: 1
-    name: '[Errou]Update Particle'
+    name: '[Error]Update Particle'
     source: "#pragma kernel CSMain\r\n#define NB_THREADS_PER_GROUP 64\n#define HAS_ATTRIBUTES
       1\n#define VFX_PASSDEPTH_ACTUAL (0)\n#define VFX_PASSDEPTH_MOTION_VECTOR (1)\n#define
       VFX_PASSDEPTH_SELECTION (2)\n#define VFX_USE_LIFETIME_CURRENT 1\n#define VFX_USE_POSITION_CURRENT
@@ -968,8 +982,8 @@ VisualEffectResource:
       uint indirectIndex = indirectBuffer.IncrementCounter();\r\n\t\tindirectBuffer[indirectIndex]
       = index;\r\n#endif\r\n#endif\r\n\t}\r\n}\r\n"
   - compute: 0
-    name: '[Errou]Output Particle Quad'
-    source: "Shader \"Hidden/VFX/Errou/Errou/Output Particle Quad\"\n{\r\n\tSubShader\r\n\t{\t\r\n\t\tCull
+    name: '[Error]Output Particle Quad'
+    source: "Shader \"Hidden/VFX/Errou/Error/Output Particle Quad\"\n{\r\n\tSubShader\r\n\t{\t\r\n\t\tCull
       Off\r\n\t\t\r\n\t\tTags { \"Queue\"=\"Transparent\" \"IgnoreProjector\"=\"True\"
       \"RenderType\"=\"Transparent\" }\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\tBlend
       SrcAlpha One\n\t\tZTest LEqual\n\t\tZWrite Off\n\t\tCull Off\n\t\t\n\t\n\t\t\t\n\t\tHLSLINCLUDE\n\t\t\n\t\t#define
@@ -1446,14 +1460,14 @@ VisualEffectResource:
       o.outMotionVector.a = o.color.a < i.VFX_VARYING_ALPHATHRESHOLD ? 0.0f : 1.0f;
       //Independant clipping for motion vector pass\n\t\t#endif\n\t\t\t\treturn o;\n\t\t\t}\n\t\t\tENDHLSL\n\t\t}\n\t\t\n\r\n\t\t\r\n\t}\r\n}\r\n"
   - compute: 1
-    name: '[Errou]Initialize Particle'
+    name: '[Error]Initialize Particle'
     source: "#pragma kernel CSMain\r\n#define NB_THREADS_PER_GROUP 64\n#define HAS_ATTRIBUTES
       1\n#define VFX_PASSDEPTH_ACTUAL (0)\n#define VFX_PASSDEPTH_MOTION_VECTOR (1)\n#define
       VFX_PASSDEPTH_SELECTION (2)\n#define VFX_USE_LIFETIME_CURRENT 1\n#define VFX_USE_POSITION_CURRENT
       1\n#define VFX_USE_VELOCITY_CURRENT 1\n#define VFX_USE_ALIVE_CURRENT 1\n#define
       VFX_USE_AGE_CURRENT 1\n#define VFX_USE_POSITION_SOURCE 1\n#define VFX_USE_SPAWNER_FROM_GPU
       1\n#define VFX_LOCAL_SPACE 1\n#include \"Packages/com.unity.visualeffectgraph/Shaders/RenderPipeline/Universal/VFXDefines.hlsl\"\n\n\r\nCBUFFER_START(parameters)\n   
-      float Lifetime_a;\n    uint3 PADDING_0;\nCBUFFER_END\n\nstruct Attributes\n{\n   
+      float3 Velocity_c;\n    float Lifetime_a;\nCBUFFER_END\n\nstruct Attributes\n{\n   
       float lifetime;\n    float3 position;\n    float3 velocity;\n    bool alive;\n   
       float age;\n};\n\nstruct SourceAttributes\n{\n    float3 position;\n};\n\n\n\r\n\r\n#define
       USE_DEAD_LIST (VFX_USE_ALIVE_CURRENT && !HAS_STRIPS)\r\n\r\nRWByteAddressBuffer
@@ -1509,11 +1523,11 @@ VisualEffectResource:
       PARTICLE_PER_STRIP_COUNT);\r\n\t\tInitStripAttributes(particleIndex, attributes,
       stripData);\r\n\t\t// TODO Change seed to be sure we're deterministic on random
       with strip\r\n#endif\r\n        \r\n        SetAttribute_F0142CB9( /*inout
-      */attributes.lifetime, Lifetime_a);\n        {\n            float3 tmp_w =
+      */attributes.lifetime, Lifetime_a);\n        {\n            float3 tmp_x =
       sourceAttributes.position;\n            SetAttribute_CAC02F9E( /*inout */attributes.position,
-      tmp_w);\n        }\n        {\n            SetAttribute_AA7D638( /*inout */attributes.velocity,
-      float3(0, 0.600000024, 0));\n        }\n        \n\r\n\t\t\r\n#if VFX_USE_ALIVE_CURRENT\r\n       
-      if (attributes.alive)\r\n#endif       \r\n        {\r\n#if USE_DEAD_LIST\r\n\t       
+      tmp_x);\n        }\n        SetAttribute_AA7D638( /*inout */attributes.velocity,
+      Velocity_c);\n        \n\r\n\t\t\r\n#if VFX_USE_ALIVE_CURRENT\r\n        if
+      (attributes.alive)\r\n#endif       \r\n        {\r\n#if USE_DEAD_LIST\r\n\t       
       uint deadIndex = deadListIn.DecrementCounter();\r\n            uint index =
       deadListIn[deadIndex];\r\n#else\r\n            uint index = particleIndex;\r\n#endif\r\n           
       attributeBuffer.Store((index * 0x1 + 0x0) << 2,asuint(attributes.lifetime));\n           
@@ -2777,31 +2791,31 @@ VisualEffectResource:
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 14
+        data[3]: 1
       - op: 1
         valueIndex: 4
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 13
+        data[3]: 14
       - op: 1
         valueIndex: 5
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 14
+        data[3]: 13
       - op: 1
         valueIndex: 6
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 13
+        data[3]: 14
       - op: 1
         valueIndex: 7
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 14
+        data[3]: 13
       - op: 1
         valueIndex: 8
         data[0]: -1
@@ -2825,129 +2839,135 @@ VisualEffectResource:
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 7
-      - op: 57
+        data[3]: 14
+      - op: 1
         valueIndex: 12
-        data[0]: 3
+        data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 0
-      - op: 56
+        data[3]: 1
+      - op: 1
         valueIndex: 13
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 7
+      - op: 57
+        valueIndex: 14
         data[0]: 4
         data[1]: -1
         data[2]: -1
         data[3]: 0
-      - op: 1
-        valueIndex: 17
-        data[0]: -1
+      - op: 56
+        valueIndex: 15
+        data[0]: 5
         data[1]: -1
         data[2]: -1
-        data[3]: 3
+        data[3]: 0
+      - op: 3
+        valueIndex: 19
+        data[0]: 10
+        data[1]: 3
+        data[2]: 10
+        data[3]: -1
       - op: 1
-        valueIndex: 20
+        valueIndex: 22
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 7
       - op: 57
-        valueIndex: 21
-        data[0]: 5
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 56
-        valueIndex: 22
+        valueIndex: 23
         data[0]: 6
         data[1]: -1
         data[2]: -1
         data[3]: 1
+      - op: 56
+        valueIndex: 24
+        data[0]: 7
+        data[1]: -1
+        data[2]: -1
+        data[3]: 1
       - op: 1
-        valueIndex: 26
+        valueIndex: 28
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 7
       - op: 57
-        valueIndex: 27
-        data[0]: 7
-        data[1]: -1
-        data[2]: -1
-        data[3]: 2
-      - op: 56
-        valueIndex: 28
-        data[0]: 9
+        valueIndex: 29
+        data[0]: 11
         data[1]: -1
         data[2]: -1
         data[3]: 2
       - op: 6
-        valueIndex: 32
+        valueIndex: 30
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: -1
       - op: 1
-        valueIndex: 33
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 5
-      - op: 1
-        valueIndex: 34
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 56
-        valueIndex: 35
-        data[0]: 8
-        data[1]: -1
-        data[2]: -1
-        data[3]: 3
-      - op: 1
-        valueIndex: 39
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 40
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 3
-      - op: 1
-        valueIndex: 43
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 44
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 3
-      - op: 1
-        valueIndex: 47
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 3
-      - op: 1
-        valueIndex: 50
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 51
+        valueIndex: 31
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 6
       - op: 1
-        valueIndex: 52
+        valueIndex: 32
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 5
+      - op: 1
+        valueIndex: 33
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 1
+      - op: 56
+        valueIndex: 34
+        data[0]: 8
+        data[1]: -1
+        data[2]: -1
+        data[3]: 2
+      - op: 1
+        valueIndex: 38
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 3
+      - op: 1
+        valueIndex: 41
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 3
+      - op: 1
+        valueIndex: 44
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 1
+      - op: 1
+        valueIndex: 45
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 3
+      - op: 1
+        valueIndex: 48
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 1
+      - op: 56
+        valueIndex: 49
+        data[0]: 9
+        data[1]: -1
+        data[2]: -1
+        data[3]: 3
+      - op: 1
+        valueIndex: 53
         data[0]: -1
         data[1]: -1
         data[2]: -1
@@ -2964,43 +2984,43 @@ VisualEffectResource:
           m_Value: 0.5
         - m_ExpressionIndex: 2
           m_Value: 0.01
+        - m_ExpressionIndex: 3
+          m_Value: 0.6
         - m_ExpressionIndex: 10
           m_Value: 0
-        - m_ExpressionIndex: 23
-          m_Value: 2.5
-        - m_ExpressionIndex: 25
-          m_Value: 0
-        - m_ExpressionIndex: 27
+        - m_ExpressionIndex: 12
           m_Value: 2
-        - m_ExpressionIndex: 30
-          m_Value: 0
+        - m_ExpressionIndex: 25
+          m_Value: 2.5
+        - m_ExpressionIndex: 29
+          m_Value: 2.5
+        - m_ExpressionIndex: 31
+          m_Value: 2.5
       m_Vector2f:
         m_Array: []
       m_Vector3f:
         m_Array:
-        - m_ExpressionIndex: 14
-          m_Value: {x: 0, y: 0.6, z: 0}
-        - m_ExpressionIndex: 26
+        - m_ExpressionIndex: 27
           m_Value: {x: 0, y: 1, z: 0}
         - m_ExpressionIndex: 28
           m_Value: {x: 1, y: 1, z: 1}
-        - m_ExpressionIndex: 29
+        - m_ExpressionIndex: 30
           m_Value: {x: 0, y: 0, z: 0}
       m_Vector4f:
         m_Array: []
       m_Uint:
         m_Array:
-        - m_ExpressionIndex: 31
+        - m_ExpressionIndex: 23
           m_Value: 1
       m_Int:
         m_Array:
-        - m_ExpressionIndex: 22
+        - m_ExpressionIndex: 24
           m_Value: 1
       m_Matrix4x4f:
         m_Array: []
       m_AnimationCurve:
         m_Array:
-        - m_ExpressionIndex: 4
+        - m_ExpressionIndex: 5
           m_Value:
             serializedVersion: 2
             m_Curve:
@@ -3034,7 +3054,7 @@ VisualEffectResource:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-        - m_ExpressionIndex: 6
+        - m_ExpressionIndex: 7
           m_Value:
             serializedVersion: 2
             m_Curve:
@@ -3138,7 +3158,7 @@ VisualEffectResource:
             m_RotationOrder: 4
       m_Gradient:
         m_Array:
-        - m_ExpressionIndex: 3
+        - m_ExpressionIndex: 4
           m_Value:
             serializedVersion: 2
             key0: {r: 1, g: 1, b: 1, a: 0}
@@ -3168,7 +3188,7 @@ VisualEffectResource:
             m_Mode: 0
             m_NumColorKeys: 2
             m_NumAlphaKeys: 4
-        - m_ExpressionIndex: 5
+        - m_ExpressionIndex: 6
           m_Value:
             serializedVersion: 2
             key0: {r: 1, g: 1, b: 1, a: 1}
@@ -3198,7 +3218,7 @@ VisualEffectResource:
             m_Mode: 0
             m_NumColorKeys: 3
             m_NumAlphaKeys: 3
-        - m_ExpressionIndex: 7
+        - m_ExpressionIndex: 11
           m_Value:
             serializedVersion: 2
             key0: {r: 1, g: 1, b: 1, a: 1}
@@ -3230,37 +3250,39 @@ VisualEffectResource:
             m_NumAlphaKeys: 2
       m_NamedObject:
         m_Array:
-        - m_ExpressionIndex: 11
+        - m_ExpressionIndex: 13
           m_Value: {fileID: 2800000, guid: ac105d06ae6d54740a11797c50a77339, type: 3}
-        - m_ExpressionIndex: 15
+        - m_ExpressionIndex: 17
           m_Value: {fileID: 2800000, guid: fa073230e0625a24f9fa4a183e748bea, type: 3}
-        - m_ExpressionIndex: 18
+        - m_ExpressionIndex: 20
           m_Value: {fileID: 2800000, guid: 330664b317928c94c95ab1a265d8dfb3, type: 3}
-        - m_ExpressionIndex: 32
+        - m_ExpressionIndex: 33
           m_Value: {fileID: 2800000, guid: 3f1568a8090153d46af109d3f53e959d, type: 3}
       m_Bool:
         m_Array: []
     m_ExposedExpressions:
-    - nameId: GradientColorBook
-      index: 5
-    - nameId: GradientColorCircle
-      index: 7
-    - nameId: GradientColorInterrogation
+    - nameId: AddVelocityError
       index: 3
-    - nameId: LifeTimeBook
-      index: 30
-    - nameId: LifeTimeCircle
-      index: 10
-    - nameId: LifeTimeInterrogation
-      index: 27
-    - nameId: SizeOverLifeTimeBook
+    - nameId: GradientColorAllCircles
+      index: 11
+    - nameId: GradientColorError
       index: 6
-    - nameId: SizeOverLifeTimeCircle
-      index: 9
-    - nameId: SizeOverLifeTimeCircle2
-      index: 8
-    - nameId: SizeOverLifeTimeInterrogation
+    - nameId: GradientColorX
       index: 4
+    - nameId: LifeTimeAllCircles
+      index: 12
+    - nameId: LifeTimeError
+      index: 31
+    - nameId: LifeTimeX
+      index: 29
+    - nameId: SizeOverLifeTimeCircleIn
+      index: 8
+    - nameId: SizeOverLifeTimeCircleOut
+      index: 9
+    - nameId: SizeOverLifeTimError
+      index: 7
+    - nameId: SizeOverLifeTimeX
+      index: 5
     m_Buffers:
     - type: 1
       size: 32
@@ -3535,11 +3557,11 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: LoopCount
-        index: 22
+        index: 24
       - nameId: LoopDuration
-        index: 23
-      - nameId: Delay
         index: 25
+      - nameId: Delay
+        index: 10
       params: []
       processor: {fileID: 11500000, guid: 6f6b8e2489fd4ea47b25d989c51b9f76, type: 3}
       shaderSourceIndex: -1
@@ -3560,7 +3582,7 @@ VisualEffectResource:
       index: 1
     values:
     - nameId: bounds_center
-      index: 26
+      index: 27
     - nameId: bounds_size
       index: 28
     tasks:
@@ -3577,10 +3599,10 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: Lifetime_a
-        index: 10
+        index: 12
       params:
       - nameId: bounds_center
-        index: 26
+        index: 27
       - nameId: bounds_size
         index: 28
       processor: {fileID: 0}
@@ -3598,7 +3620,7 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: deltaTime_c
-        index: 21
+        index: 22
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: 1
@@ -3609,11 +3631,11 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: Size_b
-        index: 20
+        index: 32
       - nameId: Color_c
-        index: 19
+        index: 21
       - nameId: mainTexture
-        index: 18
+        index: 20
       params:
       - nameId: sortPriority
         index: 0
@@ -3629,14 +3651,14 @@ VisualEffectResource:
     - nameId: sourceAttributeBuffer
       index: 0
     - nameId: eventList
-      index: 4
+      index: 5
     - nameId: deadList
       index: 10
     - nameId: deadListCount
       index: 11
     values:
     - nameId: bounds_center
-      index: 29
+      index: 30
     - nameId: bounds_size
       index: 28
     tasks:
@@ -3645,7 +3667,7 @@ VisualEffectResource:
       - nameId: attributeBuffer
         index: 1
       - nameId: eventList
-        index: 4
+        index: 5
       - nameId: deadListIn
         index: 10
       - nameId: deadListCount
@@ -3655,10 +3677,12 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: Lifetime_a
-        index: 30
+        index: 31
+      - nameId: Velocity_c
+        index: 16
       params:
       - nameId: bounds_center
-        index: 29
+        index: 30
       - nameId: bounds_size
         index: 28
       processor: {fileID: 0}
@@ -3674,7 +3698,7 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: deltaTime_b
-        index: 21
+        index: 22
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: 3
@@ -3685,11 +3709,11 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: Size_b
-        index: 17
+        index: 19
       - nameId: Color_c
-        index: 16
+        index: 18
       - nameId: mainTexture
-        index: 15
+        index: 17
       params:
       - nameId: sortPriority
         index: 0
@@ -3712,7 +3736,7 @@ VisualEffectResource:
       index: 13
     values:
     - nameId: bounds_center
-      index: 29
+      index: 30
     - nameId: bounds_size
       index: 28
     tasks:
@@ -3731,10 +3755,10 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: Lifetime_a
-        index: 27
+        index: 29
       params:
       - nameId: bounds_center
-        index: 29
+        index: 30
       - nameId: bounds_size
         index: 28
       processor: {fileID: 0}
@@ -3748,7 +3772,7 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: deltaTime_a
-        index: 21
+        index: 22
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: 6
@@ -3759,11 +3783,11 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: Size_b
-        index: 13
+        index: 15
       - nameId: Color_c
-        index: 12
+        index: 14
       - nameId: mainTexture
-        index: 11
+        index: 13
       params:
       - nameId: sortPriority
         index: 0
@@ -3779,14 +3803,14 @@ VisualEffectResource:
     - nameId: sourceAttributeBuffer
       index: 0
     - nameId: eventList
-      index: 5
+      index: 4
     - nameId: deadList
       index: 14
     - nameId: deadListCount
       index: 15
     values:
     - nameId: bounds_center
-      index: 26
+      index: 27
     - nameId: bounds_size
       index: 28
     tasks:
@@ -3795,7 +3819,7 @@ VisualEffectResource:
       - nameId: attributeBuffer
         index: 3
       - nameId: eventList
-        index: 5
+        index: 4
       - nameId: deadListIn
         index: 14
       - nameId: deadListCount
@@ -3805,10 +3829,10 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: Lifetime_a
-        index: 10
+        index: 12
       params:
       - nameId: bounds_center
-        index: 26
+        index: 27
       - nameId: bounds_size
         index: 28
       processor: {fileID: 0}
@@ -3822,7 +3846,7 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: deltaTime_b
-        index: 21
+        index: 22
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: 9
@@ -3833,11 +3857,11 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: Size_b
-        index: 24
+        index: 26
       - nameId: Color_c
-        index: 19
+        index: 21
       - nameId: mainTexture
-        index: 32
+        index: 33
       params:
       - nameId: sortPriority
         index: 0
@@ -4217,7 +4241,7 @@ MonoBehaviour:
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  title: Circle
+  title: CircleOut
   m_Owners:
   - {fileID: 8926484042661614558}
   - {fileID: 8926484042661614583}
@@ -4241,8 +4265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children:
-  - {fileID: 8926484042661614703}
   - {fileID: 8926484042661615704}
+  - {fileID: 8926484042661614703}
   m_UIPosition: {x: 940, y: 757}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
@@ -4794,7 +4818,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614633}
   - {fileID: 8926484042661614882}
   - {fileID: 8926484042661614973}
-  m_UIPosition: {x: 2689, y: 956}
+  m_UIPosition: {x: 2315, y: 859}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -4906,7 +4930,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614708}
   - {fileID: 8926484042661614897}
   - {fileID: 8926484042661615298}
-  m_UIPosition: {x: 2688, y: 187}
+  m_UIPosition: {x: 2314, y: 90}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -5264,7 +5288,7 @@ MonoBehaviour:
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  title: Errou
+  title: Error
   m_Owners:
   - {fileID: 8926484042661614643}
   - {fileID: 8926484042661615101}
@@ -5580,7 +5604,7 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614696}
-  m_ExposedName: SizeOverLifeTimeCircle
+  m_ExposedName: SizeOverLifeTimeCircleOut
   m_Exposed: 1
   m_Order: 1
   m_Category: 
@@ -5599,7 +5623,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614696}
       inputSlot: {fileID: 8926484042661614689}
-    position: {x: 707, y: 1453}
+    position: {x: 684, y: 1439}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661614696
@@ -5657,7 +5681,7 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614698}
-  m_ExposedName: GradientColorCircle
+  m_ExposedName: GradientColorAllCircles
   m_Exposed: 1
   m_Order: 3
   m_Category: 
@@ -5676,14 +5700,14 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614698}
       inputSlot: {fileID: 8926484042661614594}
-    position: {x: 728, y: 1585}
+    position: {x: 705, y: 1571}
     expandedSlots: []
     expanded: 0
   - m_Id: 1
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614698}
       inputSlot: {fileID: 8926484042661615680}
-    position: {x: 1496, y: 1373}
+    position: {x: 1372, y: 1362}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661614698
@@ -5810,7 +5834,7 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614702}
-  m_ExposedName: LifeTimeCircle
+  m_ExposedName: LifeTimeAllCircles
   m_Exposed: 1
   m_Order: 0
   m_Category: 
@@ -5829,14 +5853,14 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614702}
       inputSlot: {fileID: 8926484042661614700}
-    position: {x: 702, y: 400}
+    position: {x: 730, y: 401}
     expandedSlots: []
     expanded: 0
   - m_Id: 1
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614702}
       inputSlot: {fileID: 8926484042661615693}
-    position: {x: 1561, y: 277}
+    position: {x: 1399, y: 271}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661614702
@@ -5863,7 +5887,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
+      m_SerializableObject: 2
     m_Space: 2147483647
   m_Property:
     name: o
@@ -5994,7 +6018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 2688, y: -47}
+  m_UIPosition: {x: 2315, y: -147}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -6131,7 +6155,7 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614780}
-  m_ExposedName: LifeTimeBook
+  m_ExposedName: LifeTimeError
   m_Exposed: 1
   m_Order: 4
   m_Category: 
@@ -6150,7 +6174,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614780}
       inputSlot: {fileID: 8926484042661614709}
-    position: {x: 2510, y: 357}
+    position: {x: 2136, y: 260}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661614780
@@ -6177,7 +6201,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
+      m_SerializableObject: 2.5
     m_Space: 2147483647
   m_Property:
     name: o
@@ -6271,9 +6295,9 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614885}
-  m_ExposedName: SizeOverLifeTimeBook
+  m_ExposedName: SizeOverLifeTimError
   m_Exposed: 1
-  m_Order: 5
+  m_Order: 6
   m_Category: 
   m_Min:
     m_Type:
@@ -6290,7 +6314,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614885}
       inputSlot: {fileID: 8926484042661614883}
-    position: {x: 2456, y: 1317}
+    position: {x: 2082, y: 1220}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661614885
@@ -6373,9 +6397,9 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614957}
-  m_ExposedName: GradientColorBook
+  m_ExposedName: GradientColorError
   m_Exposed: 1
-  m_Order: 6
+  m_Order: 7
   m_Category: 
   m_Min:
     m_Type:
@@ -6392,7 +6416,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614957}
       inputSlot: {fileID: 8926484042661614974}
-    position: {x: 2475, y: 1447}
+    position: {x: 2101, y: 1350}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661614957
@@ -6757,7 +6781,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children:
   - {fileID: 8926484042661615206}
-  m_UIPosition: {x: 2688, y: 652}
+  m_UIPosition: {x: 2314, y: 555}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -6790,7 +6814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 3514, y: -92}
+  m_UIPosition: {x: 2991, y: -153}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -6853,7 +6877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 3512, y: 509}
+  m_UIPosition: {x: 2989, y: 448}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -6889,7 +6913,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615121}
   - {fileID: 8926484042661615122}
   - {fileID: 8926484042661615124}
-  m_UIPosition: {x: 3513, y: 755}
+  m_UIPosition: {x: 2990, y: 694}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -7127,7 +7151,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615182}
   - {fileID: 8926484042661615139}
   - {fileID: 8926484042661615292}
-  m_UIPosition: {x: 3512, y: 116}
+  m_UIPosition: {x: 2989, y: 55}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -7713,9 +7737,9 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661615229}
-  m_ExposedName: LifeTimeInterrogation
+  m_ExposedName: LifeTimeX
   m_Exposed: 1
-  m_Order: 7
+  m_Order: 8
   m_Category: 
   m_Min:
     m_Type:
@@ -7732,7 +7756,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661615229}
       inputSlot: {fileID: 8926484042661615183}
-    position: {x: 3290, y: 281}
+    position: {x: 2817, y: 226}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661615229
@@ -7759,7 +7783,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 2
+      m_SerializableObject: 2.5
     m_Space: 2147483647
   m_Property:
     name: o
@@ -7790,9 +7814,9 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661615231}
-  m_ExposedName: SizeOverLifeTimeInterrogation
+  m_ExposedName: SizeOverLifeTimeX
   m_Exposed: 1
-  m_Order: 8
+  m_Order: 9
   m_Category: 
   m_Min:
     m_Type:
@@ -7809,7 +7833,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661615231}
       inputSlot: {fileID: 8926484042661615123}
-    position: {x: 3238, y: 1113}
+    position: {x: 2776, y: 1052}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661615231
@@ -7867,9 +7891,9 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661615233}
-  m_ExposedName: GradientColorInterrogation
+  m_ExposedName: GradientColorX
   m_Exposed: 1
-  m_Order: 9
+  m_Order: 10
   m_Category: 
   m_Min:
     m_Type:
@@ -7886,7 +7910,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661615233}
       inputSlot: {fileID: 8926484042661615125}
-    position: {x: 3242, y: 1235}
+    position: {x: 2780, y: 1174}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661615233
@@ -8174,7 +8198,7 @@ MonoBehaviour:
   m_Children:
   - {fileID: 8926484042661615300}
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661615299}
   m_MasterData:
@@ -8217,7 +8241,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615302}
   - {fileID: 8926484042661615303}
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661615299}
   m_MasterData:
@@ -8306,7 +8330,8 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
     attributes: []
   m_Direction: 0
-  m_LinkedSlots: []
+  m_LinkedSlots:
+  - {fileID: 8926484042661615712}
 --- !u!114 &8926484042661615303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8355,7 +8380,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children:
   - {fileID: 8926484042661615665}
-  m_UIPosition: {x: 1749, y: 636}
+  m_UIPosition: {x: 1608, y: 625}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -8495,7 +8520,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615671}
   - {fileID: 8926484042661615677}
   - {fileID: 8926484042661615679}
-  m_UIPosition: {x: 1751, y: 848}
+  m_UIPosition: {x: 1610, y: 837}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -8909,7 +8934,7 @@ MonoBehaviour:
   m_Children:
   - {fileID: 8926484042661615692}
   - {fileID: 8926484042661615694}
-  m_UIPosition: {x: 1750, y: 111}
+  m_UIPosition: {x: 1609, y: 100}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -9849,7 +9874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1754, y: -109}
+  m_UIPosition: {x: 1607, y: -135}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -9918,7 +9943,7 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661615710}
-  m_ExposedName: SizeOverLifeTimeCircle2
+  m_ExposedName: SizeOverLifeTimeCircleIn
   m_Exposed: 1
   m_Order: 2
   m_Category: 
@@ -9937,7 +9962,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661615710}
       inputSlot: {fileID: 8926484042661615678}
-    position: {x: 1474, y: 1241}
+    position: {x: 1355, y: 1232}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661615710
@@ -9975,3 +10000,80 @@ MonoBehaviour:
   m_Direction: 1
   m_LinkedSlots:
   - {fileID: 8926484042661615678}
+--- !u!114 &8926484042661615711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330e0fca1717dde4aaa144f48232aa64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Parent: {fileID: 114350483966674976}
+  m_Children: []
+  m_UIPosition: {x: 0, y: 0}
+  m_UICollapsed: 1
+  m_UISuperCollapsed: 0
+  m_InputSlots: []
+  m_OutputSlots:
+  - {fileID: 8926484042661615712}
+  m_ExposedName: AddVelocityError
+  m_Exposed: 1
+  m_Order: 5
+  m_Category: 
+  m_Min:
+    m_Type:
+      m_SerializableType: 
+    m_SerializableObject: 
+  m_Max:
+    m_Type:
+      m_SerializableType: 
+    m_SerializableObject: 
+  m_IsOutput: 0
+  m_Tooltip: 
+  m_Nodes:
+  - m_Id: 0
+    linkedSlots:
+    - outputSlot: {fileID: 8926484042661615712}
+      inputSlot: {fileID: 8926484042661615302}
+    position: {x: 2120, y: 379}
+    expandedSlots: []
+    expanded: 0
+--- !u!114 &8926484042661615712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f780aa281814f9842a7c076d436932e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Parent: {fileID: 0}
+  m_Children: []
+  m_UIPosition: {x: 0, y: 0}
+  m_UICollapsed: 1
+  m_UISuperCollapsed: 0
+  m_MasterSlot: {fileID: 8926484042661615712}
+  m_MasterData:
+    m_Owner: {fileID: 8926484042661615711}
+    m_Value:
+      m_Type:
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      m_SerializableObject: 0.6
+    m_Space: 2147483647
+  m_Property:
+    name: o
+    m_serializedType:
+      m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+    attributes: []
+  m_Direction: 1
+  m_LinkedSlots:
+  - {fileID: 8926484042661615302}
