@@ -253,8 +253,8 @@ MonoBehaviour:
     min: -Infinity
     max: Infinity
     descendantCount: 0
-  - name: SizeOverLifeCorrect
-    path: SizeOverLifeCorrect
+  - name: SizeOverLifeTimeCorrect
+    path: SizeOverLifeTimeCorrect
     tooltip: 
     sheetType: m_AnimationCurve
     realType: AnimationCurve
@@ -262,7 +262,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.25,"value":0.25,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":2.0,"outTangent":2.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":2.5,"value":6.5,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
     min: -Infinity
     max: Infinity
     descendantCount: 0
@@ -6142,24 +6142,15 @@ VisualEffectResource:
             - serializedVersion: 3
               time: 0
               value: 0
-              inSlope: 0
-              outSlope: 0
+              inSlope: 2
+              outSlope: 2
               tangentMode: 0
               weightedMode: 0
               inWeight: 0
               outWeight: 0
             - serializedVersion: 3
-              time: 0.25
-              value: 0.25
-              inSlope: 0
-              outSlope: 0
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 1
-              value: 0
+              time: 2.5
+              value: 6.5
               inSlope: 0
               outSlope: 0
               tangentMode: 0
@@ -6424,12 +6415,12 @@ VisualEffectResource:
       index: 49
     - nameId: LifeTimeRocketTrail
       index: 50
-    - nameId: SizeOverLifeCorrect
-      index: 16
     - nameId: SizeOverLifeTimeCircleIn
       index: 8
     - nameId: SizeOverLifeTimeCircleOut
       index: 15
+    - nameId: SizeOverLifeTimeCorrect
+      index: 16
     - nameId: SizeOverLifeTimeHanamaru
       index: 10
     - nameId: SizeOverLifeTimeRocket
@@ -10013,12 +10004,12 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614885}
-  m_ExposedName: SizeOverLifeCorrect
+  m_ExposedName: SizeOverLifeTimeCorrect
   m_Exposed: 1
   m_Order: 5
   m_Category: 
@@ -10064,7 +10055,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.25,"value":0.25,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":2.0,"outTangent":2.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":2.5,"value":6.5,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
     m_Space: 2147483647
   m_Property:
     name: o
@@ -15630,7 +15621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78581a96eae8bf4398c282eb0b098bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
@@ -16623,7 +16614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78581a96eae8bf4398c282eb0b098bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
@@ -18050,7 +18041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78581a96eae8bf4398c282eb0b098bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
