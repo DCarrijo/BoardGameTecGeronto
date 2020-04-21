@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6180930147795950326}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -411,20 +411,20 @@ VisualEffect:
           - serializedVersion: 3
             time: 0
             value: 0
-            inSlope: 2.6
-            outSlope: 2.6
-            tangentMode: 34
+            inSlope: 2
+            outSlope: 2
+            tangentMode: 0
             weightedMode: 0
             inWeight: 0
-            outWeight: 0.33333334
+            outWeight: 0
           - serializedVersion: 3
             time: 2.5
             value: 6.5
-            inSlope: 2.6
-            outSlope: 2.6
-            tangentMode: 34
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
             weightedMode: 0
-            inWeight: 0.33333334
+            inWeight: 0
             outWeight: 0
           m_PreInfinity: 2
           m_PostInfinity: 2
@@ -437,14 +437,14 @@ VisualEffect:
           - serializedVersion: 3
             time: 0
             value: 0
-            inSlope: 4.5123315
-            outSlope: 4.5123315
+            inSlope: 3.0967062
+            outSlope: 3.0967062
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
-            outWeight: 0.069418386
+            outWeight: 0.05607477
           - serializedVersion: 3
-            time: 2
+            time: 2.5
             value: 3.5
             inSlope: 0
             outSlope: 0
@@ -482,6 +482,32 @@ VisualEffect:
           m_PostInfinity: 2
           m_RotationOrder: 4
         m_Name: SizeOverLifeTimeRocket
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 2
+            outSlope: 2
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 2.5
+            value: 6.5
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: SizeOverLifeTimeCorrect
         m_Overridden: 1
     m_Gradient:
       m_Array:
