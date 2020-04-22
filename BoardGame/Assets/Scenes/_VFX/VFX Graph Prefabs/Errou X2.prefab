@@ -80,20 +80,20 @@ VisualEffect:
           - serializedVersion: 3
             time: 0
             value: 0
-            inSlope: 1.1925697
-            outSlope: 1.1925697
+            inSlope: 0.3596164
+            outSlope: 0.3596164
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
-            outWeight: 0.07102804
+            outWeight: 0.11301943
           - serializedVersion: 3
             time: 2.5
-            value: 2
-            inSlope: 0
-            outSlope: 0
+            value: 0.5
+            inSlope: 0.003373605
+            outSlope: 0.003373605
             tangentMode: 0
             weightedMode: 0
-            inWeight: 0
+            inWeight: 0.11426916
             outWeight: 0
           m_PreInfinity: 2
           m_PostInfinity: 2
