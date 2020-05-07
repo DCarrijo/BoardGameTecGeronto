@@ -515,8 +515,19 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="DataBase" t="Include">
+            <e p="Register.cs" t="Include" />
+            <e p="RetrieveQuestions.cs" t="Include" />
+            <e p="SQLTest.cs" t="Include" />
+          </e>
           <e p="DiceResult.cs" t="Include" />
+          <e p="Gamplay" t="Include">
+            <e p="CreateMap.cs" t="Include" />
+            <e p="HexagonPoints.cs" t="Include" />
+            <e p="TIlesGraph.cs" t="Include" />
+          </e>
           <e p="HonestyVerifier.cs" t="Include" />
+          <e p="MaterialChooser.cs" t="Include" />
           <e p="SimpleCameraController.cs" t="Include" />
           <e p="ThrowDice.cs" t="Include" />
           <e p="Tools" t="Include">
