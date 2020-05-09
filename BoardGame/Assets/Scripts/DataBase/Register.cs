@@ -37,17 +37,20 @@ public class Register : MonoBehaviour
         StartCoroutine(RegisterFunc());
     }
 
-    IEnumerator RegisterFunc()
+    private IEnumerator RegisterFunc()
     {
+        // List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
+        // formData.Add(new MultipartFormDataSection("categoria", GetCategorie()));
+        // formData.Add(new MultipartFormDataSection(name: "pergunta", data: Pergunta.text));
+        // formData.Add(new MultipartFormDataSection("respostaCerta", RespostaCerta.text));
+        // formData.Add(new MultipartFormDataSection("respostaErrada1", RespostaErrada1.text));
+        // formData.Add(new MultipartFormDataSection("respostaErrada2", RespostaErrada2.text));
+        // formData.Add(new MultipartFormDataSection("respostaErrada3", RespostaErrada3.text));
+    
         List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
-        formData.Add(new MultipartFormDataSection("categoria", GetCategorie()));
-        formData.Add(new MultipartFormDataSection(name: "pergunta", data: Pergunta.text));
-        formData.Add(new MultipartFormDataSection("respostaCerta", RespostaCerta.text));
-        formData.Add(new MultipartFormDataSection("respostaErrada1", RespostaErrada1.text));
-        formData.Add(new MultipartFormDataSection("respostaErrada2", RespostaErrada2.text));
-        formData.Add(new MultipartFormDataSection("respostaErrada3", RespostaErrada3.text));
+        formData.Add(new MultipartFormDataSection("foo", "bar"));
         
-        UnityWebRequest wwwR = UnityWebRequest.Post("https://www.capudino.com/sqlconnect/register.php", formData);
+        UnityWebRequest wwwR = UnityWebRequest.Post("https://www.capudino.com/sqlconnect/result", formData);
 
         yield return wwwR.SendWebRequest();
 
@@ -58,6 +61,28 @@ public class Register : MonoBehaviour
         else
         {
             Debug.Log("Pergunta Registrada");
+            Debug.Log(wwwR.responseCode);
+            string responseText = wwwR.downloadHandler.text;
+            Debug.Log("Response Text:" + responseText);
+        }
+    }
+
+    private IEnumerator GetFunc()
+    {
+        UnityWebRequest wwwR = UnityWebRequest.Get("https://www.capudino.com/sqlconnect/getrequest.py");
+
+        yield return wwwR.SendWebRequest();
+
+        if (wwwR.isNetworkError || wwwR.isHttpError)
+        {
+            Debug.Log(wwwR.error);
+        }
+        else
+        {
+            Debug.Log("Pergunta Registrada");
+            Debug.Log(wwwR.responseCode);
+            string responseText = wwwR.downloadHandler.text;
+            Debug.Log("Response Text:" + responseText);
         }
     }
     

@@ -41,6 +41,14 @@
           </e>
           <e p="readme_DOTweenPro.txt" t="Include" />
         </e>
+        <e p="GabrielAguiarProductions" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="CameraShakeSimpleScript.cs" t="Include" />
+            <e p="ProjectileMoveScript.cs" t="Include" />
+            <e p="RotateToMouseScript.cs" t="Include" />
+            <e p="SpawnProjectilesScript.cs" t="Include" />
+          </e>
+        </e>
         <e p="JMO Assets" t="Include">
           <e p="Toony Colors Pro" t="Include">
             <e p="!ToonyColorsPro Readme.txt" t="Include" />
@@ -512,6 +520,13 @@
                 </e>
               </e>
             </e>
+          </e>
+        </e>
+        <e p="Scenes" t="Include">
+          <e p="UI Scripts" t="Include">
+            <e p="MainMenu.cs" t="Include" />
+            <e p="OptionsMenu.cs" t="Include" />
+            <e p="PauseMenu.cs" t="Include" />
           </e>
         </e>
         <e p="Scripts" t="Include">
