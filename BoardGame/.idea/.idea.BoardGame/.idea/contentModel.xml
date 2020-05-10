@@ -546,6 +546,10 @@
           </e>
           <e p="HonestyVerifier.cs" t="Include" />
           <e p="MaterialChooser.cs" t="Include" />
+          <e p="PoolingSystem" t="Include">
+            <e p="IPooledObject.cs" t="Include" />
+            <e p="ObjectPooler.cs" t="Include" />
+          </e>
           <e p="SimpleCameraController.cs" t="Include" />
           <e p="ThrowDice.cs" t="Include" />
           <e p="Tools" t="Include">

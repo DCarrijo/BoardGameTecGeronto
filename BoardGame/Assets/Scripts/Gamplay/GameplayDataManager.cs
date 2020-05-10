@@ -9,4 +9,9 @@ public class GameplayDataManager : ScriptableObject
     public int PlayerCount = 0;
 
     [SerializeField] [PreviewField(Height = 100)] private GameObject[] _playerPrefabs;
+    
+    public GameObject[] PlayerPrefabs
+    {
+        get => _playerPrefabs;
+    } 
 }

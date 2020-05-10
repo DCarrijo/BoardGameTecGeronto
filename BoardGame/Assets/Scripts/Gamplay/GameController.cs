@@ -17,6 +17,11 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        SetupGame();
+    }
+
+    private void SetupGame()
+    {
         _totalPlayerNumber = _gameplayData.PlayerCount;
         _currentPlayer = 1;
 
@@ -24,13 +29,9 @@ public class GameController : MonoBehaviour
             
         for (int i = 0; i < _totalPlayerNumber; i++)
         {
-            _players.Add(new Player());
+            GameObject playerShip = Instantiate(_gameplayData.PlayerPrefabs[i]);
+            _players.Add(new Player(i, playerShip, _firstTile));
         }
-    }
-
-    private void SetupGameData()
-    {
-        
     }
     
     private void StartGame()
