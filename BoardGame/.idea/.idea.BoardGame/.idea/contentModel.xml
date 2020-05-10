@@ -538,6 +538,7 @@
           <e p="DiceResult.cs" t="Include" />
           <e p="Gamplay" t="Include">
             <e p="CreateMap.cs" t="Include" />
+            <e p="DiceRollTest.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
             <e p="GameplayDataManager.cs" t="Include" />
             <e p="HexagonPoints.cs" t="Include" />
@@ -549,6 +550,9 @@
           <e p="PoolingSystem" t="Include">
             <e p="IPooledObject.cs" t="Include" />
             <e p="ObjectPooler.cs" t="Include" />
+          </e>
+          <e p="Questions" t="Include">
+            <e p="Question.cs" t="Include" />
           </e>
           <e p="SimpleCameraController.cs" t="Include" />
           <e p="ThrowDice.cs" t="Include" />

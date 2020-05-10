@@ -15,9 +15,9 @@ public class TilesGraph : MonoBehaviour
     [SerializeField] private List<TilesGraph> _backwardsConnections = new List<TilesGraph>();
     [SerializeField] private Transform _shipFloatingPoint;
 
-    public GameObject GetConnectedTile(int index = 0, ConnectionType connectionType = ConnectionType.forward)
+    public TilesGraph GetConnectedTile(int index = 0, ConnectionType connectionType = ConnectionType.forward)
     {
-        if (index <= 0)
+        if (index < 0)
             return null;
         
         if (connectionType == ConnectionType.forward)
@@ -25,14 +25,14 @@ public class TilesGraph : MonoBehaviour
             if (index >= _forwardConnections.Count)
                 return null;
             else
-                return _forwardConnections[index].gameObject;
+                return _forwardConnections[index];
         }
         else
         {
             if (index >= _backwardsConnections.Count)
                 return null;
             else
-                return _backwardsConnections[index].gameObject;
+                return _backwardsConnections[index];
         }
     }
 

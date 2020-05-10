@@ -5,23 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Networking;
+using System.Xml;
+using System.IO;
 
 public class Register : MonoBehaviour
 {
-    private enum Categorias
-    {
-        MOB = 0,    //mobilidade
-        FIN,        //saude financeira
-        SEG,        //seguranca
-        SAU,        //auto cuidado/saude
-        CON,        //convivio interpessoal
-        EMO,        //equilibrio emocional
-        SEX,        //sexualidade
-        ALI,        //alimentacao saudavel
-        EDU,        //educacao ao longo da vida
-        CMV         //corpo em movimento
-    }
-    
     public TMP_InputField Pergunta;
     public TMP_InputField RespostaCerta;
     public TMP_InputField RespostaErrada1;
@@ -34,9 +22,15 @@ public class Register : MonoBehaviour
 
     public void CallRegister()
     {
-        StartCoroutine(RegisterFunc());
+       //StartCoroutine(RegisterFunc());
+       SaveQuestion();
     }
 
+    private void SaveQuestion()
+    {
+        
+    }
+    
     private IEnumerator RegisterFunc()
     {
         // List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
@@ -88,7 +82,7 @@ public class Register : MonoBehaviour
     
     public string GetCategorie()
     {
-        return ((Categorias)Categoria.value).ToString(); 
+        return ((Categories)Categoria.value).ToString(); 
     }
     
     public void VerifyInputs()

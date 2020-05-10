@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.WSA;
 
 public class Player
 {
@@ -21,8 +20,19 @@ public class Player
         }
     }
 
-    public void MovePlayerToTile(TilesGraph tile)
+    public void MovePlayerForward(int spaces)
     {
+        for (int i = 0; i < spaces; i++)
+        {
+            MovePlayerToTile(CurentTile.GetConnectedTile(0, ConnectionType.forward));
+        }
+    }
+
+    private void MovePlayerToTile(TilesGraph tile)
+    {
+        if (tile == null)
+            return;
+        
         CurentTile = tile;
         PlayerSpaceShip.transform.position = tile.transform.position + Vector3.up;
     }
@@ -31,5 +41,4 @@ public class Player
     {
         PlayerSpaceShip.transform.position = CurentTile.transform.position + Vector3.up + vectorRelativeToCenter;
     }
-    
 }
