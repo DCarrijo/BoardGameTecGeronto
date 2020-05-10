@@ -538,7 +538,10 @@
           <e p="DiceResult.cs" t="Include" />
           <e p="Gamplay" t="Include">
             <e p="CreateMap.cs" t="Include" />
+            <e p="GameController.cs" t="Include" />
+            <e p="GameplayDataManager.cs" t="Include" />
             <e p="HexagonPoints.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
             <e p="TIlesGraph.cs" t="Include" />
           </e>
           <e p="HonestyVerifier.cs" t="Include" />
