@@ -41,6 +41,14 @@
           </e>
           <e p="readme_DOTweenPro.txt" t="Include" />
         </e>
+        <e p="GabrielAguiarProductions" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="CameraShakeSimpleScript.cs" t="Include" />
+            <e p="ProjectileMoveScript.cs" t="Include" />
+            <e p="RotateToMouseScript.cs" t="Include" />
+            <e p="SpawnProjectilesScript.cs" t="Include" />
+          </e>
+        </e>
         <e p="JMO Assets" t="Include">
           <e p="Toony Colors Pro" t="Include">
             <e p="!ToonyColorsPro Readme.txt" t="Include" />
@@ -514,6 +522,13 @@
             </e>
           </e>
         </e>
+        <e p="Scenes" t="Include">
+          <e p="UI Scripts" t="Include">
+            <e p="MainMenu.cs" t="Include" />
+            <e p="OptionsMenu.cs" t="Include" />
+            <e p="PauseMenu.cs" t="Include" />
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="DataBase" t="Include">
             <e p="Register.cs" t="Include" />
@@ -523,11 +538,18 @@
           <e p="DiceResult.cs" t="Include" />
           <e p="Gamplay" t="Include">
             <e p="CreateMap.cs" t="Include" />
+            <e p="GameController.cs" t="Include" />
+            <e p="GameplayDataManager.cs" t="Include" />
             <e p="HexagonPoints.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
             <e p="TIlesGraph.cs" t="Include" />
           </e>
           <e p="HonestyVerifier.cs" t="Include" />
           <e p="MaterialChooser.cs" t="Include" />
+          <e p="PoolingSystem" t="Include">
+            <e p="IPooledObject.cs" t="Include" />
+            <e p="ObjectPooler.cs" t="Include" />
+          </e>
           <e p="SimpleCameraController.cs" t="Include" />
           <e p="ThrowDice.cs" t="Include" />
           <e p="Tools" t="Include">
