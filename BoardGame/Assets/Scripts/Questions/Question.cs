@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
+using System.Text;
+using UnityEditor.Rendering.Universal.ShaderGUI;
 using UnityEngine;
-using System.Xml.Serialization;
-using System.Xml;
 
 [System.Serializable]
 public enum Categories
@@ -28,12 +29,19 @@ public class Question
     public int QuestionId;
     public Categories QuestionCategory;
 
-    public Question(string question, string rightAnswer, string[] wrongAnswer, int questionId, Categories questionCategory)
+    public Question(string question, string rightAnswer, string[] wrongAnswer, Categories questionCategory, int questionId)
     {
         this.QuestionText = question;
         this.RightAnswer = rightAnswer;
         this.WrongAnswer = wrongAnswer;
-        this.QuestionId = questionId;
         this.QuestionCategory = questionCategory;
+        this.QuestionId = questionId;
+    }
+
+    public override string ToString()
+    {
+        return "ID: " + QuestionId + "\n" +
+               QuestionText + "\n" + RightAnswer + "\n" + WrongAnswer[0] + "\n" + WrongAnswer[1] + "\n" +
+               WrongAnswer[2] + "\n" + QuestionCategory;
     }
 }

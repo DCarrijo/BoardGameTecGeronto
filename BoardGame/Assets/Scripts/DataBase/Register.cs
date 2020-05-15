@@ -5,8 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Networking;
-using System.Xml;
-using System.IO;
 
 public class Register : MonoBehaviour
 {
@@ -18,7 +16,14 @@ public class Register : MonoBehaviour
 
     public TMP_Dropdown Categoria;
 
+    public TextMeshProUGUI CurrentIdText;
+
     public Button submitButton;
+
+    private void Update()
+    {
+        CurrentIdText.text = QuestionSaver.CurrentQuestionId.ToString();
+    }
 
     public void CallRegister()
     {
@@ -26,11 +31,33 @@ public class Register : MonoBehaviour
        SaveQuestion();
     }
 
-    private void SaveQuestion()
+    public void SaveQuestion()
     {
+        Question question = new Question(Pergunta.text, 
+                                RespostaCerta.text, 
+                                new []{RespostaErrada1.text,RespostaErrada2.text,RespostaErrada3.text},
+                                (Categories)Categoria.value, ++QuestionSaver.CurrentQuestionId);
         
+        QuestionHash.Add(question);
+        
+        foreach (var log in QuestionHash.Log())
+        {
+            Debug.Log(log);
+        }
+        
+        //QuestionSaver.SaveQuestion(question);
     }
-    
+
+    public void SaveBuffer()
+    {
+        QuestionSaver.SaveQuestion(QuestionHash.GetArray());
+    }
+
+    public void DeleteFile()
+    {
+        QuestionSaver.DeleteSaveFile();
+    }
+
     private IEnumerator RegisterFunc()
     {
         // List<IMultipartFormSection> formData = new List<IMultipartFormSection>();

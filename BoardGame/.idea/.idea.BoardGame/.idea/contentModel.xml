@@ -531,6 +531,8 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="DataBase" t="Include">
+            <e p="QuestionHash.cs" t="Include" />
+            <e p="QuestionsLoader.cs" t="Include" />
             <e p="Register.cs" t="Include" />
             <e p="RetrieveQuestions.cs" t="Include" />
             <e p="SQLTest.cs" t="Include" />
@@ -543,6 +545,7 @@
             <e p="GameplayDataManager.cs" t="Include" />
             <e p="HexagonPoints.cs" t="Include" />
             <e p="Player.cs" t="Include" />
+            <e p="TileManager.cs" t="Include" />
             <e p="TIlesGraph.cs" t="Include" />
           </e>
           <e p="HonestyVerifier.cs" t="Include" />
@@ -552,7 +555,9 @@
             <e p="ObjectPooler.cs" t="Include" />
           </e>
           <e p="Questions" t="Include">
+            <e p="ButtonManager.cs" t="Include" />
             <e p="Question.cs" t="Include" />
+            <e p="QuestionSaver.cs" t="Include" />
           </e>
           <e p="SimpleCameraController.cs" t="Include" />
           <e p="ThrowDice.cs" t="Include" />

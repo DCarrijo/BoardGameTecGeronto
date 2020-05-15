@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GameplayDataManager
   m_EditorClassIdentifier: 
   PlayerCount: 2
+  Categorias: 000000000600000008000000
   _playerPrefabs:
   - {fileID: 6562465370695920753, guid: b9147749e0622c144b6a1c2ea66aeed6, type: 3}
   - {fileID: 7521714994832642780, guid: fa14d04a154c536498d920229ed5e7b0, type: 3}

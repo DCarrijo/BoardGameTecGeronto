@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 
 public enum ConnectionType
 {
@@ -14,8 +14,24 @@ public class TilesGraph : MonoBehaviour
     [SerializeField] private List<TilesGraph> _forwardConnections = new List<TilesGraph>();
     [SerializeField] private List<TilesGraph> _backwardsConnections = new List<TilesGraph>();
     [SerializeField] private Transform _shipFloatingPoint;
+    
+    public TileManager TileManager { get; private set; }
 
-    public TilesGraph GetConnectedTile(int index = 0, ConnectionType connectionType = ConnectionType.forward)
+    public static List<TilesGraph> AllTiles { get; private set; }
+
+    private void Awake()
+    {
+        TileManager = this.GetComponentInChildren<TileManager>();
+        
+        if (AllTiles == null)
+        {
+            AllTiles = new List<TilesGraph>();
+        }
+
+        AllTiles.Add(this);
+    }
+
+    public TilesGraph GetConnectedTile(int index, ConnectionType connectionType = ConnectionType.forward)
     {
         if (index < 0)
             return null;
@@ -33,6 +49,18 @@ public class TilesGraph : MonoBehaviour
                 return null;
             else
                 return _backwardsConnections[index];
+        }
+    }
+
+    public TilesGraph[] GetConnectedTile(ConnectionType connectionType = ConnectionType.forward)
+    {
+        if (connectionType == ConnectionType.forward)
+        {
+            return _forwardConnections.ToArray();
+        }
+        else
+        {
+            return _backwardsConnections.ToArray();
         }
     }
 
