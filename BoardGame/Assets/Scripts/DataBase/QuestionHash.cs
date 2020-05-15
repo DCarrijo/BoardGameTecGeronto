@@ -24,7 +24,7 @@ public static class QuestionHash
     {
         if (Hash == null)
             CreateHash();
-        
+
         foreach (var question in questions)
         {
             Hash[question.QuestionCategory].Add(question);
@@ -35,9 +35,12 @@ public static class QuestionHash
     {
         if (Hash == null)
             CreateHash();
-        
+
         Hash[question.QuestionCategory].Add(question);
     }
+    
+    public static Question GetGameQuestion()
+    {}
 
     public static void GenerateGameQuestions()
     {
@@ -63,7 +66,6 @@ public static class QuestionHash
         return questionsQueue;
     }
 
-
     public static Question[] GetArray()
     {
         List<Question> questions = new List<Question>();
@@ -78,7 +80,6 @@ public static class QuestionHash
 
         return questions.ToArray();
     }
-    
 
     public static string[] Log()
     {
@@ -93,5 +94,4 @@ public static class QuestionHash
 
         return aux.ToArray();
     }
-    
 }

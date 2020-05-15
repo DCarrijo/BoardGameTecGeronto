@@ -32,6 +32,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private Material _lastTileMaterial;
     [SerializeField] private Material _lastGlowMaterial;
 
+    [SerializeField] private ShowQuestion _questionShower;
+
     private void Awake()
     {
         StartCoroutine(GameSetup());
@@ -81,9 +83,7 @@ public class GameController : MonoBehaviour
                 
                 yield return null;
             }
-            
-            
-            
+
             yield return null;
         }
 
@@ -137,7 +137,15 @@ public class GameController : MonoBehaviour
         
         yield return new WaitUntil(()=> _diceRollCanvas.activeInHierarchy == false);
 
+        TilesGraph lastTile = _players[_currentPlayer].CurentTile;
+        
         _players[_currentPlayer].MovePlayerForward(_currentDiceNumber);
+
+        _players[_currentPlayer].CurentTile.TileManager.
+        
+        _questionShower.StartQuestion();
+        
+        yield return new WaitUntil(()=>_questionShower.gameObject.activeInHierarchy == false);
 
         _roundFinished = true;
     }

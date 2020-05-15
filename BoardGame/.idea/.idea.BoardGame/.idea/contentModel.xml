@@ -522,13 +522,6 @@
             </e>
           </e>
         </e>
-        <e p="Scenes" t="Include">
-          <e p="UI Scripts" t="Include">
-            <e p="MainMenu.cs" t="Include" />
-            <e p="OptionsMenu.cs" t="Include" />
-            <e p="PauseMenu.cs" t="Include" />
-          </e>
-        </e>
         <e p="Scripts" t="Include">
           <e p="DataBase" t="Include">
             <e p="QuestionHash.cs" t="Include" />
@@ -558,6 +551,7 @@
             <e p="ButtonManager.cs" t="Include" />
             <e p="Question.cs" t="Include" />
             <e p="QuestionSaver.cs" t="Include" />
+            <e p="ShowQuestion.cs" t="Include" />
           </e>
           <e p="SimpleCameraController.cs" t="Include" />
           <e p="ThrowDice.cs" t="Include" />
@@ -566,6 +560,11 @@
               <e p="SceneEssentials.cs" t="Include" />
             </e>
             <e p="SceneEssentialObjects.cs" t="Include" />
+          </e>
+          <e p="UI Scripts" t="Include">
+            <e p="MainMenu.cs" t="Include" />
+            <e p="OptionsMenu.cs" t="Include" />
+            <e p="PauseMenu.cs" t="Include" />
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">

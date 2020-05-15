@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class TileManager : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class TileManager : MonoBehaviour
         {
             Debug.LogError("TileCannotBeFirstAndLast");
         }
+    }
+
+    public Question GetQuestion()
+    {
+        
     }
 
     public void SetTile(Categories cat, Material materialTile, Material materialGlow)
