@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class QuestionSaver
 {
+   public static bool HasLoaded { get; private set; } = false;
    private static string path = Application.persistentDataPath + "/questions.qst";
 
    public static int CurrentQuestionId = 0;
@@ -28,6 +29,8 @@ public static class QuestionSaver
          stream.Close();
 
          CurrentQuestionId = question.Length;
+
+         HasLoaded = true;
          
          return question;
       }

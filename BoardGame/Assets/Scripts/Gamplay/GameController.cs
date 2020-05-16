@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
     private bool _roundFinished = false;
     private bool _mapSetup = false;
     private bool _playerSetup = false;
+    private bool _questionSetup = false;
     private bool _currentPlayerResult = false;
 
     [SerializeField] private Material[] _tileMaterials;
@@ -53,10 +54,20 @@ public class GameController : MonoBehaviour
     {
         yield return StartCoroutine(SetupPlayers());
         yield return StartCoroutine(SetupMap());
+        yield return StartCoroutine(SetupQuestion());
         
-        yield return new WaitUntil(()=>_mapSetup && _playerSetup);
-        
+        yield return new WaitUntil(()=>_mapSetup && _playerSetup && _questionSetup);
+
         StartGame();
+    }
+
+    private IEnumerator SetupQuestion()
+    {
+        yield return new WaitUntil(()=> QuestionSaver.HasLoaded);
+        
+        QuestionHash.GenerateGameQuestions();
+
+        _questionSetup = true;
     }
 
     private IEnumerator SetupPlayers()
@@ -74,6 +85,7 @@ public class GameController : MonoBehaviour
 
         DiceRollTest.DiceResult += GetDiceRoll;
         yield return null;
+        _playerSetup = true;
     }
 
     private IEnumerator SetupMap()
@@ -115,6 +127,8 @@ public class GameController : MonoBehaviour
         
         _firstTile.TileManager.SetFirstTile(_firstTileMaterial, _firstGlowMaterial);
         _lastTile.TileManager.SetLastTile(_lastTileMaterial, _lastGlowMaterial);
+
+        _mapSetup = true;
     }
     
     private void StartGame()
@@ -130,7 +144,6 @@ public class GameController : MonoBehaviour
         do
         {
             _currentPlayer = _currentPlayer >= _totalPlayerNumber-1 ? 0 : _currentPlayer + 1;
-            Debug.Log(_currentPlayer);
             StartCoroutine(PlayRound());
             
             yield return new WaitUntil(()=>_roundFinished);
@@ -156,8 +169,10 @@ public class GameController : MonoBehaviour
         _questionShower.StartQuestion(_players[_currentPlayer].CurentTile.TileManager.GetQuestion());
         
         yield return new WaitUntil(()=>_questionShower.gameObject.activeInHierarchy == false);
-
-        if (!_currentPlayerResult)
+        
+        Debug.Log(_questionShower.CurrentResult);
+        
+        if (!_questionShower.CurrentResult)
         {
             _players[_currentPlayer].MovePlayerBackWards(_currentDiceNumber);
         }

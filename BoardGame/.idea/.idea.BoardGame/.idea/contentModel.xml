@@ -533,6 +533,7 @@
           <e p="DiceResult.cs" t="Include" />
           <e p="Gamplay" t="Include">
             <e p="CreateMap.cs" t="Include" />
+            <e p="DiceManager.cs" t="Include" />
             <e p="DiceRollTest.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
             <e p="GameplayDataManager.cs" t="Include" />

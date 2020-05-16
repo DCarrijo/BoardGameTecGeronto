@@ -6,7 +6,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public static class QuestionHash
-{
+{ 
     private static Dictionary<Categories, List<Question>> Hash;
 
     public static Dictionary<Categories, Queue<Question>> GameQuestions { get; private set; }

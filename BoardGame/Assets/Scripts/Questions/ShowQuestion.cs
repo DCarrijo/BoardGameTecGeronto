@@ -14,7 +14,9 @@ public class ShowQuestion : MonoBehaviour
     private int _rightAnswerIndex = -1;
 
     public Action<bool> OnAnswer;
-    
+
+    public bool CurrentResult { get; private set; } = false;
+
     public void StartQuestion(Question question)
     {
         SetupQuestion(question);
@@ -44,6 +46,7 @@ public class ShowQuestion : MonoBehaviour
     public void CheckAnswer(int index)
     {
         OnAnswer?.Invoke(index == _rightAnswerIndex);
+        CurrentResult = (index == _rightAnswerIndex);
         this.gameObject.SetActive(false);
     }
 }

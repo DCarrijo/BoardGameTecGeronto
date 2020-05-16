@@ -5,16 +5,12 @@ using TMPro;
 using DG.Tweening;
 using Random = UnityEngine.Random;
 
-
-
 public class DiceManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private GameObject _dice;
     [SerializeField] private DOTweenAnimation _diceAnimation;
     public static Action<int> OnDiceNumberChoose;
-
-
 
     private readonly Dictionary<int, Vector3> _numberVectorDict = new Dictionary<int, Vector3>
     {
@@ -25,9 +21,7 @@ public class DiceManager : MonoBehaviour
         {5, new Vector3(0,-90,0)},
         {6, new Vector3(180,0,0)}
     };
-
-
-
+    
     public void DiceRoll()
     {
         _diceAnimation.DOPause();
@@ -35,8 +29,6 @@ public class DiceManager : MonoBehaviour
         _text.text = diceNumber.ToString();
         _dice.transform.localRotation = Quaternion.Euler( _numberVectorDict[diceNumber]);
         OnDiceNumberChoose?.Invoke(diceNumber);
+        this.gameObject.SetActive(false);
     }
-
-
-
 }
