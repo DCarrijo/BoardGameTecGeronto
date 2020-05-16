@@ -12,6 +12,8 @@ public class ShowQuestion : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _categorie;
 
     private int _rightAnswerIndex = -1;
+
+    public Action<bool> OnAnswer;
     
     public void StartQuestion(Question question)
     {
@@ -41,13 +43,7 @@ public class ShowQuestion : MonoBehaviour
 
     public void CheckAnswer(int index)
     {
-        if (index == _rightAnswerIndex)
-        {
-            Debug.Log("Acertou Carai");
-        }
-        else
-        {
-            Debug.Log("Errou");
-        }
+        OnAnswer?.Invoke(index == _rightAnswerIndex);
+        this.gameObject.SetActive(false);
     }
 }

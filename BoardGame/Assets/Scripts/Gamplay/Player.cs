@@ -28,6 +28,14 @@ public class Player
         }
     }
 
+    public void MovePlayerBackWards(int spaces)
+    {
+        for (int i = 0; i < spaces; i++)
+        {
+            MovePlayerToTile(CurentTile.GetConnectedTile(0, ConnectionType.backward));
+        }
+    }
+
     private void MovePlayerToTile(TilesGraph tile)
     {
         if (tile == null)

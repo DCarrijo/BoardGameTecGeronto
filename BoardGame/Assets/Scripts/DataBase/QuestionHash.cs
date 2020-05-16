@@ -38,9 +38,17 @@ public static class QuestionHash
 
         Hash[question.QuestionCategory].Add(question);
     }
-    
-    public static Question GetGameQuestion()
-    {}
+
+    public static Question GetGameQuestion(Categories categorie)
+    {
+        if (GameQuestions == null)
+            return null;
+
+        Question aux = GameQuestions[categorie].Dequeue();
+        GameQuestions[categorie].Enqueue(aux);
+        
+        return aux;
+    }
 
     public static void GenerateGameQuestions()
     {

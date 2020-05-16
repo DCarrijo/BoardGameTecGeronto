@@ -20,8 +20,8 @@ public class TileManager : MonoBehaviour
     }
 
     public Question GetQuestion()
-    {
-        
+    { 
+        return QuestionHash.GetGameQuestion(this._tileCategorie);
     }
 
     public void SetTile(Categories cat, Material materialTile, Material materialGlow)

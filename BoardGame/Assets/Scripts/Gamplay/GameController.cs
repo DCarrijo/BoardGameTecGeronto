@@ -1,11 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.iOS;
-using UnityEngine.WSA;
 
 public class GameController : MonoBehaviour
 {
@@ -23,6 +20,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject _diceRollCanvas;
 
     private bool _roundFinished = false;
+    private bool _mapSetup = false;
+    private bool _playerSetup = false;
+    private bool _currentPlayerResult = false;
 
     [SerializeField] private Material[] _tileMaterials;
     [SerializeField] private Material[] _glowMaterials;
@@ -36,13 +36,27 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        _questionShower.OnAnswer += ListenToAnwser;
+
+        _mapSetup = false;
+        _playerSetup = false;
+        
         StartCoroutine(GameSetup());
+    }
+
+    private void OnDestroy()
+    {
+        _questionShower.OnAnswer += ListenToAnwser;
     }
 
     private IEnumerator GameSetup()
     {
         yield return StartCoroutine(SetupPlayers());
         yield return StartCoroutine(SetupMap());
+        
+        yield return new WaitUntil(()=>_mapSetup && _playerSetup);
+        
+        StartGame();
     }
 
     private IEnumerator SetupPlayers()
@@ -137,16 +151,17 @@ public class GameController : MonoBehaviour
         
         yield return new WaitUntil(()=> _diceRollCanvas.activeInHierarchy == false);
 
-        TilesGraph lastTile = _players[_currentPlayer].CurentTile;
-        
         _players[_currentPlayer].MovePlayerForward(_currentDiceNumber);
 
-        _players[_currentPlayer].CurentTile.TileManager.
-        
-        _questionShower.StartQuestion();
+        _questionShower.StartQuestion(_players[_currentPlayer].CurentTile.TileManager.GetQuestion());
         
         yield return new WaitUntil(()=>_questionShower.gameObject.activeInHierarchy == false);
 
+        if (!_currentPlayerResult)
+        {
+            _players[_currentPlayer].MovePlayerBackWards(_currentDiceNumber);
+        }
+        
         _roundFinished = true;
     }
 
@@ -158,5 +173,10 @@ public class GameController : MonoBehaviour
     private void GetDiceRoll(int diceRoll)
     {
         _currentDiceNumber = diceRoll;
+    }
+
+    private void ListenToAnwser(bool result)
+    {
+        _currentPlayerResult = result;
     }
 }
