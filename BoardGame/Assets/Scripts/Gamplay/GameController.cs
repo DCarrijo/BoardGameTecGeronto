@@ -38,6 +38,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         _questionShower.OnAnswer += ListenToAnwser;
+        DiceManager.OnDiceNumberChoose += GetDiceRoll;
 
         _mapSetup = false;
         _playerSetup = false;
@@ -47,7 +48,8 @@ public class GameController : MonoBehaviour
 
     private void OnDestroy()
     {
-        _questionShower.OnAnswer += ListenToAnwser;
+        _questionShower.OnAnswer -= ListenToAnwser;
+        DiceManager.OnDiceNumberChoose -= GetDiceRoll;
     }
 
     private IEnumerator GameSetup()
@@ -82,8 +84,7 @@ public class GameController : MonoBehaviour
             _players.Add(new Player(i, playerShip, _firstTile));
             yield return null;
         }
-
-        DiceRollTest.DiceResult += GetDiceRoll;
+        
         yield return null;
         _playerSetup = true;
     }
@@ -164,17 +165,14 @@ public class GameController : MonoBehaviour
         
         yield return new WaitUntil(()=> _diceRollCanvas.activeInHierarchy == false);
 
-        _players[_currentPlayer].MovePlayerForward(_currentDiceNumber);
+        yield return _players[_currentPlayer].MovePlayerForward(_currentDiceNumber);
 
         _questionShower.StartQuestion(_players[_currentPlayer].CurentTile.TileManager.GetQuestion());
-        
         yield return new WaitUntil(()=>_questionShower.gameObject.activeInHierarchy == false);
-        
-        Debug.Log(_questionShower.CurrentResult);
         
         if (!_questionShower.CurrentResult)
         {
-            _players[_currentPlayer].MovePlayerBackWards(_currentDiceNumber);
+            yield return _players[_currentPlayer].MovePlayerBackWards(_currentDiceNumber);
         }
         
         _roundFinished = true;

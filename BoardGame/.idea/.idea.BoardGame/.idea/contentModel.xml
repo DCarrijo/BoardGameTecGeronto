@@ -535,6 +535,7 @@
             <e p="CreateMap.cs" t="Include" />
             <e p="DiceManager.cs" t="Include" />
             <e p="DiceRollTest.cs" t="Include" />
+            <e p="DirectionChooser.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
             <e p="GameplayDataManager.cs" t="Include" />
             <e p="HexagonPoints.cs" t="Include" />
