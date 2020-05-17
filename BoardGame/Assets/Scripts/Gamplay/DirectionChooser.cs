@@ -1,20 +1,42 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DirectionChooser : MonoBehaviour
 {
     public static int ChoosenDirection { get; private set; } = -1;
+    public static bool HasChoosenDirection { get; private set; } = false;
+
+    private void Awake()
+    {
+        Player.OnMultipleRouts += StartChoosingProcess;
+    }
+
+    private void OnDestroy()
+    {
+        Player.OnMultipleRouts -= StartChoosingProcess;
+    }
 
     private void OnEnable()
     {
         ChoosenDirection = -1;
+        HasChoosenDirection = false;
     }
 
-    public void ChooseDirection(int derectionIndex)
+    public void StartChoosingProcess()
     {
-        ChoosenDirection = derectionIndex;
+        ChoosenDirection = -1;
+        HasChoosenDirection = false;
+    }
+
+    public void ChooseDirection(int directionIndex)
+    {
+        ChoosenDirection = directionIndex;
+        HasChoosenDirection = true;
         this.gameObject.SetActive(false);
+    }
+
+    public static void ResetParams()
+    {
+        ChoosenDirection = -1;
+        HasChoosenDirection = false;
     }
 }

@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Sirenix.Serialization;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player
 {
@@ -12,7 +14,11 @@ public class Player
 
     public bool FinishedMooving { get; private set; } = false;
 
-    public int LastRouteTaken { get; private set; } = -1;
+    public int LastRouteTaken { get; private set; } = 0;
+
+    private float _moveDuration = 1.0f;
+
+    public static Action OnMultipleRouts;
 
     public Player(int playerId, GameObject playerSpaceShip, TilesGraph curentTile)
     {
@@ -21,7 +27,8 @@ public class Player
         
         if (curentTile != null)
         {
-            MovePlayerToTile(curentTile);
+            this.CurentTile = curentTile;
+            PlayerSpaceShip.transform.position = CurentTile.transform.position + Vector3.up;
         }
     }
 
@@ -31,8 +38,18 @@ public class Player
 
         for (int i = 0; i < spaces; i++)
         {
-            MovePlayerToTile(CurentTile.GetConnectedTile(0, ConnectionType.forward));
-            yield return null;
+            if (CurentTile.HasMultipleRoutes)
+            {
+                OnMultipleRouts?.Invoke();
+                yield return new WaitUntil(()=>DirectionChooser.HasChoosenDirection);
+                this.LastRouteTaken = DirectionChooser.ChoosenDirection;
+                DirectionChooser.ResetParams();
+                yield return new DOTweenCYInstruction.WaitForCompletion(MovePlayerToTile(CurentTile.GetConnectedTile(LastRouteTaken, ConnectionType.forward)));
+            }
+            else
+            {
+                yield return new DOTweenCYInstruction.WaitForCompletion(MovePlayerToTile(CurentTile.GetConnectedTile(0, ConnectionType.forward)));
+            }
         }
         
         yield return new WaitForSeconds(0.5f);
@@ -46,8 +63,7 @@ public class Player
         
         for (int i = 0; i < spaces; i++)
         {
-            MovePlayerToTile(CurentTile.GetConnectedTile(0, ConnectionType.backward));
-            yield return null;
+            yield return new DOTweenCYInstruction.WaitForCompletion(MovePlayerToTile(CurentTile.GetConnectedTile(LastRouteTaken, ConnectionType.backward)));
         }
         
         yield return new WaitForSeconds(0.5f);
@@ -55,13 +71,14 @@ public class Player
         FinishedMooving = true;
     }
 
-    private void MovePlayerToTile(TilesGraph tile)
+    private Tween MovePlayerToTile(TilesGraph tile)
     {
         if (tile == null)
-            return;
-        
+            return null;
+
         CurentTile = tile;
-        PlayerSpaceShip.transform.position = tile.transform.position + Vector3.up;
+        return PlayerSpaceShip.transform.DOMove(tile.transform.position + Vector3.up, _moveDuration);
+        //PlayerSpaceShip.transform.position = tile.transform.position + Vector3.up;
     }
 
     public void MovePlayerInTile(Vector3 vectorRelativeToCenter)

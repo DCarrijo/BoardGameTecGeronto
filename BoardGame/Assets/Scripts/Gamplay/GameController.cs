@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] [AssetsOnly] private GameplayDataManager _gameplayData;
 
-    [SerializeField] private GameObject _diceRollCanvas;
+    [SerializeField] private DiceManager _diceRollCanvas;
 
     private bool _roundFinished = false;
     private bool _mapSetup = false;
@@ -34,11 +34,13 @@ public class GameController : MonoBehaviour
     [SerializeField] private Material _lastGlowMaterial;
 
     [SerializeField] private ShowQuestion _questionShower;
+    [SerializeField] private DirectionChooser _directionChooser;
 
     private void Awake()
     {
         _questionShower.OnAnswer += ListenToAnwser;
         DiceManager.OnDiceNumberChoose += GetDiceRoll;
+        Player.OnMultipleRouts += ListenMultipleRoutes;
 
         _mapSetup = false;
         _playerSetup = false;
@@ -50,6 +52,7 @@ public class GameController : MonoBehaviour
     {
         _questionShower.OnAnswer -= ListenToAnwser;
         DiceManager.OnDiceNumberChoose -= GetDiceRoll;
+        Player.OnMultipleRouts -= ListenMultipleRoutes;
     }
 
     private IEnumerator GameSetup()
@@ -144,7 +147,7 @@ public class GameController : MonoBehaviour
 
         do
         {
-            _currentPlayer = _currentPlayer >= _totalPlayerNumber-1 ? 0 : _currentPlayer + 1;
+            _currentPlayer = _currentPlayer >= _totalPlayerNumber - 1 ? 0 : _currentPlayer + 1;
             StartCoroutine(PlayRound());
             
             yield return new WaitUntil(()=>_roundFinished);
@@ -161,9 +164,7 @@ public class GameController : MonoBehaviour
         _roundFinished = false;
 
         _currentDiceNumber = 0;
-        _diceRollCanvas.SetActive(true);
-        
-        yield return new WaitUntil(()=> _diceRollCanvas.activeInHierarchy == false);
+        yield return StartCoroutine(_diceRollCanvas.StartDiceRoll());
 
         yield return _players[_currentPlayer].MovePlayerForward(_currentDiceNumber);
 
@@ -191,5 +192,11 @@ public class GameController : MonoBehaviour
     private void ListenToAnwser(bool result)
     {
         _currentPlayerResult = result;
+    }
+
+    private void ListenMultipleRoutes()
+    {
+        _directionChooser.gameObject.SetActive(true);
+        _directionChooser.StartChoosingProcess();
     }
 }

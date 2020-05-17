@@ -15,6 +15,8 @@ public class TilesGraph : MonoBehaviour
     [SerializeField] private List<TilesGraph> _backwardsConnections = new List<TilesGraph>();
     [SerializeField] private Transform _shipFloatingPoint;
     
+    public bool HasMultipleRoutes { get => _forwardConnections.Count > 1; }
+    
     public TileManager TileManager { get; private set; }
 
     public static List<TilesGraph> AllTiles { get; private set; }

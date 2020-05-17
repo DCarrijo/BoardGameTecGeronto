@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -12,6 +13,8 @@ public class DiceManager : MonoBehaviour
     [SerializeField] private DOTweenAnimation _diceAnimation;
     public static Action<int> OnDiceNumberChoose;
 
+    private bool _diceRolled = false;
+
     private readonly Dictionary<int, Vector3> _numberVectorDict = new Dictionary<int, Vector3>
     {
         {1, new Vector3(0,0,0)},
@@ -21,6 +24,18 @@ public class DiceManager : MonoBehaviour
         {5, new Vector3(0,-90,0)},
         {6, new Vector3(180,0,0)}
     };
+
+    public IEnumerator StartDiceRoll()
+    {
+        _diceRolled = false;
+        this.gameObject.SetActive(true);
+        
+        yield return new WaitUntil(() => _diceRolled);
+        
+        yield return new WaitForSeconds(1f);
+
+        this.gameObject.SetActive(false);
+    }
     
     public void DiceRoll()
     {
@@ -29,6 +44,6 @@ public class DiceManager : MonoBehaviour
         _text.text = diceNumber.ToString();
         _dice.transform.localRotation = Quaternion.Euler( _numberVectorDict[diceNumber]);
         OnDiceNumberChoose?.Invoke(diceNumber);
-        this.gameObject.SetActive(false);
+        _diceRolled = true;
     }
 }
