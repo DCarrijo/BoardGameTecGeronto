@@ -14,8 +14,13 @@ Shader "Game"
 
 		[TCP2Header(Ramp Shading)]
 		
-		[NoScaleOffset] _Ramp			("2D Ramp Texture (RGB)", 2D) = "gray" {}
-		_2DRampLerp ("2D Ramp Lerp", Range(0,1)) = 0
+		_RampThreshold ("Threshold", Range(0.01,1)) = 0.5
+		_RampSmoothing ("Smoothing", Range(0.001,1)) = 0.1
+		[TCP2Separator]
+		
+		[TCP2HeaderHelp(Specular)]
+		[TCP2ColorNoAlpha] _SpecularColor ("Specular Color", Color) = (0.5,0.5,0.5,1)
+		_SpecularRoughnessPBR ("Roughness", Range(0,1)) = 0.5
 		[TCP2Separator]
 
 		[TCP2HeaderHelp(Emission)]
@@ -86,10 +91,34 @@ Shader "Game"
 			float4 _BaseMap_ST;
 			fixed4 _BaseColor;
 			fixed4 _Emission;
-			float _2DRampLerp;
+			float _RampThreshold;
+			float _RampSmoothing;
+			float _SpecularRoughnessPBR;
+			fixed4 _SpecularColor;
 			fixed4 _SColor;
 			fixed4 _HColor;
-			sampler2D _Ramp;
+			
+			//Specular help functions (from UnityStandardBRDF.cginc)
+			inline half3 SafeNormalize(half3 inVec)
+			{
+				half dp3 = max(0.001f, dot(inVec, inVec));
+				return inVec * rsqrt(dp3);
+			}
+			
+			//GGX
+			#define TCP2_PI 3.14159265359
+			#define TCP2_INV_PI        0.31830988618f
+			#if defined(SHADER_API_MOBILE)
+				#define EPSILON 1e-4f
+			#else
+				#define EPSILON 1e-7f
+			#endif
+			inline half GGX(half NdotH, half roughness)
+			{
+				half a2 = roughness * roughness;
+				half d = (NdotH * a2 - NdotH) * NdotH + 1.0f;
+				return TCP2_INV_PI * a2 / (d * d + EPSILON);
+			}
 			CBUFFER_END
 
 			// vertex input
@@ -160,13 +189,17 @@ Shader "Game"
 
 				float3 positionWS = input.worldPosAndFog.xyz;
 				float3 normalWS = NormalizeNormalPerPixel(input.normal);
+				half3 viewDirWS = SafeNormalize(GetCameraPositionWS() - positionWS);
 
 				// Shader Properties Sampling
 				float4 __albedo = ( tex2D(_BaseMap, input.pack0.xy.xy).rgba );
 				float4 __mainColor = ( _BaseColor.rgba );
 				float __alpha = ( __albedo.a * __mainColor.a );
 				float3 __emission = ( _Emission.rgb );
-				float __2dRampLerp = ( _2DRampLerp );
+				float __rampThreshold = ( _RampThreshold );
+				float __rampSmoothing = ( _RampSmoothing );
+				float __specularRoughnessPbr = ( _SpecularRoughnessPBR );
+				float3 __specularColor = ( _SpecularColor.rgb );
 				float3 __shadowColor = ( _SColor.rgb );
 				float3 __highlightColor = ( _HColor.rgb );
 				float __ambientIntensity = ( 1.0 );
@@ -192,9 +225,10 @@ Shader "Game"
 
 				half ndl = max(0, dot(normalWS, lightDir));
 				half3 ramp;
-				half2 rampUv = ndl.xx * 0.5 + 0.5;
-				rampUv.y = __2dRampLerp;
-				ramp = tex2D(_Ramp, rampUv).rgb;
+				half rampThreshold = __rampThreshold;
+				half rampSmooth = __rampSmoothing * 0.5;
+				ndl = saturate(ndl);
+				ramp = smoothstep(rampThreshold - rampSmooth, rampThreshold + rampSmooth, ndl);
 
 				// apply attenuation
 				ramp *= atten;
@@ -202,6 +236,24 @@ Shader "Game"
 				half3 color = half3(0,0,0);
 				half3 accumulatedRamp = ramp * max(lightColor.r, max(lightColor.g, lightColor.b));
 				half3 accumulatedColors = ramp * lightColor.rgb;
+
+				//Specular: GGX
+				half3 halfDir = SafeNormalize(lightDir + viewDirWS);
+				half roughness = __specularRoughnessPbr*__specularRoughnessPbr;
+				half nh = saturate(dot(normalWS, halfDir));
+				half spec = GGX(nh, saturate(roughness));
+				spec *= TCP2_PI * 0.05;
+				#ifdef UNITY_COLORSPACE_GAMMA
+					spec = max(0, sqrt(max(1e-4h, spec)));
+					half surfaceReduction = 1.0 - 0.28 * roughness * __specularRoughnessPbr;
+				#else
+					half surfaceReduction = 1.0 / (roughness*roughness + 1.0);
+				#endif
+				spec = max(0, spec * ndl);
+				spec *= surfaceReduction;
+				
+				//Apply specular
+				color.rgb += spec * lightColor.rgb * __specularColor;
 
 				// Additional lights loop
 			#ifdef _ADDITIONAL_LIGHTS
@@ -215,10 +267,8 @@ Shader "Game"
 
 					half ndl = max(0, dot(normalWS, lightDir));
 					half3 ramp;
-					sampler2D rampTexture = _Ramp;
-					half2 rampUv = ndl;
-					rampUv.y = __2dRampLerp;
-					ramp = tex2D(rampTexture, rampUv).rgb;
+					ndl = saturate(ndl);
+					ramp = smoothstep(rampThreshold - rampSmooth, rampThreshold + rampSmooth, ndl);
 
 					// apply attenuation (shadowmaps & point/spot lights attenuation)
 					ramp *= atten;
@@ -226,6 +276,23 @@ Shader "Game"
 					accumulatedRamp += ramp * max(lightColor.r, max(lightColor.g, lightColor.b));
 					accumulatedColors += ramp * lightColor.rgb;
 
+					//Specular: GGX
+					half3 halfDir = SafeNormalize(lightDir + viewDirWS);
+					half roughness = __specularRoughnessPbr*__specularRoughnessPbr;
+					half nh = saturate(dot(normalWS, halfDir));
+					half spec = GGX(nh, saturate(roughness));
+					spec *= TCP2_PI * 0.05;
+					#ifdef UNITY_COLORSPACE_GAMMA
+						spec = max(0, sqrt(max(1e-4h, spec)));
+						half surfaceReduction = 1.0 - 0.28 * roughness * __specularRoughnessPbr;
+					#else
+						half surfaceReduction = 1.0 / (roughness*roughness + 1.0);
+					#endif
+					spec = max(0, spec * ndl);
+					spec *= surfaceReduction;
+					
+					//Apply specular
+					color.rgb += spec * lightColor.rgb * __specularColor;
 				}
 			#endif
 			#ifdef _ADDITIONAL_LIGHTS_VERTEX
@@ -270,7 +337,28 @@ Shader "Game"
 			sampler2D _BaseMap;
 			float4 _BaseMap_ST;
 			fixed4 _BaseColor;
-			sampler2D _Ramp;
+			
+			//Specular help functions (from UnityStandardBRDF.cginc)
+			inline half3 SafeNormalize(half3 inVec)
+			{
+				half dp3 = max(0.001f, dot(inVec, inVec));
+				return inVec * rsqrt(dp3);
+			}
+			
+			//GGX
+			#define TCP2_PI 3.14159265359
+			#define TCP2_INV_PI        0.31830988618f
+			#if defined(SHADER_API_MOBILE)
+				#define EPSILON 1e-4f
+			#else
+				#define EPSILON 1e-7f
+			#endif
+			inline half GGX(half NdotH, half roughness)
+			{
+				half a2 = roughness * roughness;
+				half d = (NdotH * a2 - NdotH) * NdotH + 1.0f;
+				return TCP2_INV_PI * a2 / (d * d + EPSILON);
+			}
 			CBUFFER_END
 
 			struct Attributes
@@ -284,7 +372,8 @@ Shader "Game"
 			struct Varyings
 			{
 				float4 positionCS     : SV_POSITION;
-				float2 pack0 : TEXCOORD0; /* pack0.xy = texcoord0 */
+				float3 pack0 : TEXCOORD0; /* pack0.xyz = positionWS */
+				float2 pack1 : TEXCOORD1; /* pack1.xy = texcoord0 */
 			#if defined(DEPTH_ONLY_PASS)
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
@@ -315,7 +404,10 @@ Shader "Game"
 					UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 				#endif
 				// Texture Coordinates
-				output.pack0.xy.xy = input.texcoord0.xy * _BaseMap_ST.xy + _BaseMap_ST.zw;
+				output.pack1.xy.xy = input.texcoord0.xy * _BaseMap_ST.xy + _BaseMap_ST.zw;
+
+				VertexPositionInputs vertexInput = GetVertexPositionInputs(input.vertex.xyz);
+				output.pack0.xyz = vertexInput.positionWS;
 
 				#if defined(DEPTH_ONLY_PASS)
 					output.positionCS = TransformObjectToHClip(input.vertex.xyz);
@@ -335,10 +427,12 @@ Shader "Game"
 				#endif
 
 				// Shader Properties Sampling
-				float4 __albedo = ( tex2D(_BaseMap, input.pack0.xy.xy).rgba );
+				float4 __albedo = ( tex2D(_BaseMap, input.pack1.xy.xy).rgba );
 				float4 __mainColor = ( _BaseColor.rgba );
 				float __alpha = ( __albedo.a * __mainColor.a );
 
+				float3 positionWS = input.pack0.xyz;
+				half3 viewDirWS = SafeNormalize(GetCameraPositionWS() - positionWS);
 				half3 albedo = __albedo.rgb;
 				half alpha = __alpha;
 				half3 emission = half3(0,0,0);
@@ -390,5 +484,5 @@ Shader "Game"
 	CustomEditor "ToonyColorsPro.ShaderGenerator.MaterialInspector_SG2"
 }
 
-/* TCP_DATA u config(unity:"2019.3.6f1";ver:"2.4.3";tmplt:"SG2_Template_URP";features:list["UNITY_5_4","UNITY_5_5","UNITY_5_6","UNITY_2017_1","UNITY_2018_1","UNITY_2018_2","UNITY_2018_3","UNITY_2019_1","UNITY_2019_2","UNITY_2019_3","TEXTURE_RAMP","TEXTURE_RAMP_2D","EMISSION","SILHOUETTE_URP_FEATURE","DISABLE_SHADOW_RECEIVING","DISABLE_SHADOW_CASTING","TEMPLATE_LWRP"];flags:list[];keywords:dict[RENDER_TYPE="Opaque",RampTextureDrawer="[NoScaleOffset]",RampTextureLabel="2D Ramp Texture",SHADER_TARGET="3.0"];shaderProperties:list[,,,,,,,sp(name:"Emission";imps:list[imp_mp_color(def:RGBA(1.000, 1.000, 1.000, 1.000);hdr:False;cc:3;chan:"RGB";prop:"_Emission";md:"";custom:False;refs:"";guid:"527ecf70-3f07-4bf2-9f45-da50a4281764";op:Multiply;lbl:"Emission Color";gpu_inst:False;locked:False;impl_index:-1)])];customTextures:list[]) */
-/* TCP_HASH 1300d43a65e56d58794b23b35a8f530a */
+/* TCP_DATA u config(unity:"2019.3.13f1";ver:"2.4.3";tmplt:"SG2_Template_URP";features:list["UNITY_5_4","UNITY_5_5","UNITY_5_6","UNITY_2017_1","UNITY_2018_1","UNITY_2018_2","UNITY_2018_3","UNITY_2019_1","UNITY_2019_2","UNITY_2019_3","TEXTURE_RAMP_2D","SILHOUETTE_URP_FEATURE","DISABLE_SHADOW_RECEIVING","DISABLE_SHADOW_CASTING","SPECULAR","SPECULAR_NO_ATTEN","SPEC_PBR_GGX","EMISSION","OUTLINE_URP_FEATURE","OUTLINE_CONSTANT_SIZE","TEMPLATE_LWRP"];flags:list[];keywords:dict[RENDER_TYPE="Opaque",RampTextureDrawer="[NoScaleOffset]",RampTextureLabel="2D Ramp Texture",SHADER_TARGET="3.0",RIM_LABEL="Rim Lighting",VERTEXMOTION_INCLUDE="Assets/VertExmotion/Shaders/VertExmotion.cginc",CURVED_WORLD_INCLUDE="Assets/VacuumShaders/Curved World/Shaders/cginc/CurvedWorld_Base.cginc"];shaderProperties:list[,,,,,,,,,,sp(name:"Emission";imps:list[imp_mp_color(def:RGBA(1.000, 1.000, 1.000, 1.000);hdr:False;cc:3;chan:"RGB";prop:"_Emission";md:"";custom:False;refs:"";guid:"527ecf70-3f07-4bf2-9f45-da50a4281764";op:Multiply;lbl:"Emission Color";gpu_inst:False;locked:False;impl_index:-1)])];customTextures:list[]) */
+/* TCP_HASH 76a747fc398e521e5d7f409619bac5e4 */
