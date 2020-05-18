@@ -36,6 +36,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private ShowQuestion _questionShower;
     [SerializeField] private DirectionChooser _directionChooser;
 
+    [SerializeField] private PlayerParameters _playerParameters;
+
     private void Awake()
     {
         _questionShower.OnAnswer += ListenToAnwser;
@@ -84,7 +86,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < _totalPlayerNumber; i++)
         {
             GameObject playerShip = Instantiate(_gameplayData.PlayerPrefabs[i]);
-            _players.Add(new Player(i, playerShip, _firstTile));
+            _players.Add(new Player(i, playerShip, _firstTile, _playerParameters));
             yield return null;
         }
         

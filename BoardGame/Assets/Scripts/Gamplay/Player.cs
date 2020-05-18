@@ -16,14 +16,15 @@ public class Player
 
     public int LastRouteTaken { get; private set; } = 0;
 
-    private float _moveDuration = 1.0f;
+    private PlayerParameters _playerParameters;
 
     public static Action OnMultipleRouts;
 
-    public Player(int playerId, GameObject playerSpaceShip, TilesGraph curentTile)
+    public Player(int playerId, GameObject playerSpaceShip, TilesGraph curentTile, PlayerParameters parameters)
     {
         this.PlayerId = playerId;
         this.PlayerSpaceShip = playerSpaceShip;
+        this._playerParameters = parameters;
         
         if (curentTile != null)
         {
@@ -77,7 +78,8 @@ public class Player
             return null;
 
         CurentTile = tile;
-        return PlayerSpaceShip.transform.DOMove(tile.transform.position + Vector3.up, _moveDuration);
+        
+        return PlayerSpaceShip.transform.DOMove(tile.transform.position + Vector3.up, _playerParameters.MovementDuretion).SetEase(_playerParameters.MovementAnimationCurve);
         //PlayerSpaceShip.transform.position = tile.transform.position + Vector3.up;
     }
 
