@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class GameController : MonoBehaviour
 {
@@ -38,8 +39,12 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private PlayerParameters _playerParameters;
 
+    [SerializeField] private VisualEffect _fireworks;
+
     private void Awake()
     {
+        _fireworks.Stop();
+        
         _questionShower.OnAnswer += ListenToAnwser;
         DiceManager.OnDiceNumberChoose += GetDiceRoll;
         Player.OnMultipleRouts += ListenMultipleRoutes;
@@ -134,6 +139,13 @@ public class GameController : MonoBehaviour
         _firstTile.TileManager.SetFirstTile(_firstTileMaterial, _firstGlowMaterial);
         _lastTile.TileManager.SetLastTile(_lastTileMaterial, _lastGlowMaterial);
 
+        foreach (var p in _players)
+        {
+            _firstTile.CurrentPlayers.Add(p);
+        }
+        
+        _firstTile.ArrangePlayersInTile();
+        
         _mapSetup = true;
     }
     
@@ -150,14 +162,16 @@ public class GameController : MonoBehaviour
         do
         {
             _currentPlayer = _currentPlayer >= _totalPlayerNumber - 1 ? 0 : _currentPlayer + 1;
-            StartCoroutine(PlayRound());
             
-            yield return new WaitUntil(()=>_roundFinished);
+            yield return StartCoroutine(PlayRound());
 
         } while (!CheckVictory(_players[_currentPlayer]));
         
         Debug.Log(_currentPlayer + " Has won!");
-        
+
+        _fireworks.gameObject.transform.position = _players[_currentPlayer].PlayerSpaceShip.transform.position;
+        _fireworks.Play();
+
         yield return null;
     }
 
@@ -170,12 +184,19 @@ public class GameController : MonoBehaviour
 
         yield return _players[_currentPlayer].MovePlayerForward(_currentDiceNumber);
 
+        yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(PlayerEvents.Question));
+
         _questionShower.StartQuestion(_players[_currentPlayer].CurentTile.TileManager.GetQuestion());
         yield return new WaitUntil(()=>_questionShower.gameObject.activeInHierarchy == false);
         
         if (!_questionShower.CurrentResult)
         {
+            yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(PlayerEvents.Errou));
             yield return _players[_currentPlayer].MovePlayerBackWards(_currentDiceNumber);
+        }
+        else
+        {
+            yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(PlayerEvents.Acertou));
         }
         
         _roundFinished = true;

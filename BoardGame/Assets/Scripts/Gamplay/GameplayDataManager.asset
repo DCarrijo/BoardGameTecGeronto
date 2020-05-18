@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be51912815496142bcf1ec946487e45, type: 3}
   m_Name: GameplayDataManager
   m_EditorClassIdentifier: 
-  PlayerCount: 2
+  PlayerCount: 4
   Categorias: 000000000600000002000000
   _playerPrefabs:
   - {fileID: 6562465370695920753, guid: b9147749e0622c144b6a1c2ea66aeed6, type: 3}

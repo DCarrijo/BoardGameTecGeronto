@@ -11,4 +11,13 @@ public class PlayerParameters : ScriptableObject
 
     [BoxGroup("MovementTween")] 
     public AnimationCurve MovementAnimationCurve;
+
+    [BoxGroup("LookAtTween")] 
+    public float LookAtDuration = 0.5f;
+
+    [BoxGroup("LookAtTween")] 
+    public AnimationCurve LookDirectionAnimationCurve;
+
+    [BoxGroup("TileParams")] 
+    public float TileFloatHightMultiplier = 1.5f;
 }

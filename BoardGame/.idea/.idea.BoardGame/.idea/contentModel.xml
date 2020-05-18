@@ -538,6 +538,7 @@
           <e p="HonestyVerifier.cs" t="Include" />
           <e p="MaterialChooser.cs" t="Include" />
           <e p="Player" t="Include">
+            <e p="PlayerComponents.cs" t="Include" />
             <e p="PlayerParameters.cs" t="Include" />
           </e>
           <e p="PoolingSystem" t="Include">
@@ -562,6 +563,9 @@
             <e p="MainMenu.cs" t="Include" />
             <e p="OptionsMenu.cs" t="Include" />
             <e p="PauseMenu.cs" t="Include" />
+          </e>
+          <e p="VFX" t="Include">
+            <e p="VfxEventListener.cs" t="Include" />
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">

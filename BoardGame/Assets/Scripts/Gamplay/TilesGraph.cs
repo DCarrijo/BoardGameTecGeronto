@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public enum ConnectionType
@@ -11,10 +12,11 @@ public enum ConnectionType
 
 public class TilesGraph : MonoBehaviour
 {
+    [SerializeField] private float _distanceMultiplyeir = 1.5f;
     [SerializeField] private List<TilesGraph> _forwardConnections = new List<TilesGraph>();
     [SerializeField] private List<TilesGraph> _backwardsConnections = new List<TilesGraph>();
-    [SerializeField] private Transform _shipFloatingPoint;
-    
+    public List<Player> CurrentPlayers;
+
     public bool HasMultipleRoutes { get => _forwardConnections.Count > 1; }
     
     public TileManager TileManager { get; private set; }
@@ -23,6 +25,7 @@ public class TilesGraph : MonoBehaviour
 
     private void Awake()
     {
+        CurrentPlayers = new List<Player>();
         TileManager = this.GetComponentInChildren<TileManager>();
         
         if (AllTiles == null)
@@ -31,6 +34,29 @@ public class TilesGraph : MonoBehaviour
         }
 
         AllTiles.Add(this);
+    }
+
+    public Tween ArrangePlayersInTile()
+    {
+        if (CurrentPlayers.Count == 0)
+            return null;
+        
+        if (CurrentPlayers.Count == 1) 
+        {
+            return CurrentPlayers[0].MovePlayerInTile(Vector3.zero);
+        }
+        else
+        {
+            float angle = 360f / CurrentPlayers.Count;
+            Tween aux = null;
+                
+            for (int i = 0; i < CurrentPlayers.Count; i++)
+            {
+               aux = CurrentPlayers[i].MovePlayerInTile(Quaternion.Euler(0, i * angle, 0) * (Vector3.forward * _distanceMultiplyeir));
+            }
+
+            return aux;
+        }
     }
 
     public TilesGraph GetConnectedTile(int index, ConnectionType connectionType = ConnectionType.forward)

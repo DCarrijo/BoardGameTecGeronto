@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using Sirenix.Serialization;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.PlayerLoop;
 
 public class Player
 {
     public int PlayerId { get; private set; }
     public GameObject PlayerSpaceShip { get; private set; }
+    
+    public PlayerComponents PlayerComps { get; private set; }
 
     public TilesGraph CurentTile { get; private set; } = null;
 
@@ -31,29 +34,44 @@ public class Player
             this.CurentTile = curentTile;
             PlayerSpaceShip.transform.position = CurentTile.transform.position + Vector3.up;
         }
+
+        this.PlayerComps = playerSpaceShip.GetComponent<PlayerComponents>();
     }
 
     public IEnumerator MovePlayerForward(int spaces)
     {
         FinishedMooving = false;
+        
+        PlayerComps.StartTurbo();
 
         for (int i = 0; i < spaces; i++)
         {
+            TilesGraph nextTile;
             if (CurentTile.HasMultipleRoutes)
             {
                 OnMultipleRouts?.Invoke();
                 yield return new WaitUntil(()=>DirectionChooser.HasChoosenDirection);
                 this.LastRouteTaken = DirectionChooser.ChoosenDirection;
                 DirectionChooser.ResetParams();
-                yield return new DOTweenCYInstruction.WaitForCompletion(MovePlayerToTile(CurentTile.GetConnectedTile(LastRouteTaken, ConnectionType.forward)));
+
+                nextTile = CurentTile.GetConnectedTile(LastRouteTaken, ConnectionType.forward);
             }
             else
             {
-                yield return new DOTweenCYInstruction.WaitForCompletion(MovePlayerToTile(CurentTile.GetConnectedTile(0, ConnectionType.forward)));
+                nextTile = CurentTile.GetConnectedTile(0, ConnectionType.forward);
             }
+
+            CurentTile.CurrentPlayers.Remove(this);
+            CurentTile.ArrangePlayersInTile();
+
+            yield return new DOTweenCYInstruction.WaitForCompletion(RotatePlayerSpaceShip(nextTile.transform));
+            yield return new DOTweenCYInstruction.WaitForCompletion(MovePlayerToTile(nextTile));
+            
+            CurentTile.CurrentPlayers.Add(this);
+            CurentTile.ArrangePlayersInTile();
         }
-        
-        yield return new WaitForSeconds(0.5f);
+
+        PlayerComps.StopTurbo();
 
         FinishedMooving = true;
     }
@@ -62,12 +80,22 @@ public class Player
     {
         FinishedMooving = false;
         
+        PlayerComps.StartTurbo();
+        
+        CurentTile.CurrentPlayers.Add(this);
+        CurentTile.ArrangePlayersInTile();
+        
         for (int i = 0; i < spaces; i++)
         {
-            yield return new DOTweenCYInstruction.WaitForCompletion(MovePlayerToTile(CurentTile.GetConnectedTile(LastRouteTaken, ConnectionType.backward)));
+            TilesGraph nextTile = CurentTile.GetConnectedTile(LastRouteTaken, ConnectionType.backward);
+            yield return new DOTweenCYInstruction.WaitForCompletion(RotatePlayerSpaceShip(nextTile.transform));
+            yield return new DOTweenCYInstruction.WaitForCompletion(MovePlayerToTile(nextTile));
         }
         
-        yield return new WaitForSeconds(0.5f);
+        CurentTile.CurrentPlayers.Add(this);
+        CurentTile.ArrangePlayersInTile();
+
+        PlayerComps.StopTurbo();
 
         FinishedMooving = true;
     }
@@ -79,12 +107,17 @@ public class Player
 
         CurentTile = tile;
         
-        return PlayerSpaceShip.transform.DOMove(tile.transform.position + Vector3.up, _playerParameters.MovementDuretion).SetEase(_playerParameters.MovementAnimationCurve);
+        return PlayerSpaceShip.transform.DOMove(tile.transform.position + (Vector3.up * _playerParameters.TileFloatHightMultiplier), _playerParameters.MovementDuretion).SetEase(_playerParameters.MovementAnimationCurve);
         //PlayerSpaceShip.transform.position = tile.transform.position + Vector3.up;
     }
 
-    public void MovePlayerInTile(Vector3 vectorRelativeToCenter)
+    public Tween MovePlayerInTile(Vector3 vectorRelativeToCenter)
     {
-        PlayerSpaceShip.transform.position = CurentTile.transform.position + Vector3.up + vectorRelativeToCenter;
+        return PlayerSpaceShip.transform.DOMove(CurentTile.transform.position + (Vector3.up * _playerParameters.TileFloatHightMultiplier) + vectorRelativeToCenter, 0.5f);
+    }
+
+    private Tween RotatePlayerSpaceShip(Transform nextTile)
+    {
+        return PlayerSpaceShip.transform.DOLookAt(nextTile.position + (Vector3.up * _playerParameters.TileFloatHightMultiplier), _playerParameters.LookAtDuration).SetEase(_playerParameters.LookDirectionAnimationCurve);
     }
 }
