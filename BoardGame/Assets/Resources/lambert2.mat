@@ -54,6 +54,7 @@ Material:
     m_Floats:
     - _2DRampLerp: 0
     - _AlphaClip: 0
+    - _AnisotropicSpread: 1
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
@@ -65,24 +66,46 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _OutlineWidth: 1
     - _QueueOffset: 0
+    - _RampSmoothing: 0.001
+    - _RampThreshold: 0.01
     - _ReceiveShadows: 1
+    - _RimMax: 1
+    - _RimMin: 0.5
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _SpecularRoughnessPBR: 0.05
+    - _SpecularSmoothness: 0.2
+    - _SpecularToonSize: 0.25
+    - _SpecularToonSmoothness: 0.05
     - _SrcBlend: 1
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     - __dummy__: 0
+    - __outline_gui_dummy__: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
+    - _HColor: {r: 0.9019608, g: 0.9019608, b: 0.9019608, a: 1}
+    - _OutlineColorVertex: {r: 0, g: 0, b: 0, a: 1}
+    - _RampSmoothingRGB: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+    - _RampThresholdRGB: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.5}
     - _SColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SilhouetteColor: {r: 0, g: 0, b: 0, a: 0.33}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SpecularColor: {r: 0.8113207, g: 0.8113207, b: 0.8113207, a: 1}
+    - _TCP2_AMBIENT_BACK: {r: 0, g: 0, b: 0, a: 1}
+    - _TCP2_AMBIENT_BOTTOM: {r: 0, g: 0, b: 0, a: 1}
+    - _TCP2_AMBIENT_FRONT: {r: 0, g: 0, b: 0, a: 1}
+    - _TCP2_AMBIENT_LEFT: {r: 0, g: 0, b: 0, a: 1}
+    - _TCP2_AMBIENT_RIGHT: {r: 0, g: 0, b: 0, a: 1}
+    - _TCP2_AMBIENT_TOP: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &2242124002852001276
 MonoBehaviour:
   m_ObjectHideFlags: 11

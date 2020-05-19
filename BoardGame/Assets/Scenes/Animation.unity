@@ -2204,10 +2204,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 142126308578914983, guid: bbde34142e5ff2f4a9c019c309f8be5d,
+    - target: {fileID: 8209783074689192760, guid: 4187058359b739949969e10380e3b68e,
         type: 3}
-      propertyPath: m_Name
-      value: SpaceShipPrefab (4) Variant
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2454283676518327525, guid: bbde34142e5ff2f4a9c019c309f8be5d,
         type: 3}
