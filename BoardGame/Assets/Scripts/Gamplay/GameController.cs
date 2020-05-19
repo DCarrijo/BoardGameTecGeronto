@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.VFX;
+using Cinemachine;
 
 public class GameController : MonoBehaviour
 {
@@ -40,6 +41,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private PlayerParameters _playerParameters;
 
     [SerializeField] private VisualEffect _fireworks;
+
+    [SerializeField] private CinemachineVirtualCamera _playerFollowCam;
 
     private void Awake()
     {
@@ -180,6 +183,11 @@ public class GameController : MonoBehaviour
         _roundFinished = false;
 
         _currentDiceNumber = 0;
+
+        _playerFollowCam.Follow = _players[_currentPlayer].PlayerSpaceShip.transform;
+        _playerFollowCam.LookAt = _players[_currentPlayer].PlayerSpaceShip.transform;
+        _playerFollowCam.Priority = 20;
+        
         yield return StartCoroutine(_diceRollCanvas.StartDiceRoll());
 
         yield return _players[_currentPlayer].MovePlayerForward(_currentDiceNumber);
@@ -198,6 +206,8 @@ public class GameController : MonoBehaviour
         {
             yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(PlayerEvents.Acertou));
         }
+
+        _playerFollowCam.Priority = 0;
         
         _roundFinished = true;
     }
