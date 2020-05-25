@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 using Sirenix.Serialization;
 using UnityEngine;
 using DG.Tweening;
@@ -18,6 +19,8 @@ public class Player
     public bool FinishedMooving { get; private set; } = false;
 
     public int LastRouteTaken { get; private set; } = 0;
+
+    public PowerUps PowerUp { get => this.CurentTile == null ? PowerUps.Null : CurentTile.Powerup; }
 
     private PlayerParameters _playerParameters;
 

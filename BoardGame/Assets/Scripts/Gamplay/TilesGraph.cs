@@ -2,12 +2,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum ConnectionType
 {
     forward = 0,
     backward = 1
+}
+
+public enum PowerUps
+{
+    Null = 0,
+    AcertouX2, 
+    ErrouX2, 
+    EliminaRespostaErrada
 }
 
 public class TilesGraph : MonoBehaviour
@@ -16,6 +26,8 @@ public class TilesGraph : MonoBehaviour
     [SerializeField] private List<TilesGraph> _forwardConnections = new List<TilesGraph>();
     [SerializeField] private List<TilesGraph> _backwardsConnections = new List<TilesGraph>();
     public List<Player> CurrentPlayers;
+    [SerializeField] [Range(0, 1)] private float _powerUpPropbability = 0.5f;
+    public PowerUps Powerup { get; private set; } = PowerUps.Null;
 
     public bool HasMultipleRoutes { get => _forwardConnections.Count > 1; }
     
@@ -111,6 +123,19 @@ public class TilesGraph : MonoBehaviour
             AddConnection(tile, connectionType);
         }
     }
+
+    public void SetRandomPowerUp()
+    {
+        if (Random.RandomRange(0f, 1f) > _powerUpPropbability)
+        {
+            Powerup = (PowerUps)Random.Range(1, 4);
+        }
+        else
+        {
+            Powerup = PowerUps.Null;
+        }
+    }
+
 
     private void OnDrawGizmos()
     {

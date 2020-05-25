@@ -9,6 +9,7 @@ using UnityEngine.VFX;
 [System.Serializable]
 public enum PlayerEvents
 {
+    Null = 0,
     Acertou, 
     AcertouX2,
     Errou,

@@ -5,6 +5,9 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.VFX;
 using Cinemachine;
+using System.Linq;
+using ToonyColorsPro.ShaderGenerator;
+using UnityEngine.UIElements;
 
 public class GameController : MonoBehaviour
 {
@@ -114,6 +117,8 @@ public class GameController : MonoBehaviour
 
             foreach (var t in tile.GetConnectedTile())
             {
+                t.SetRandomPowerUp();
+                
                 tilesGraphs.Enqueue(t);
 
                 if (!tilesQueue.Contains(t))
@@ -190,7 +195,7 @@ public class GameController : MonoBehaviour
         
         yield return StartCoroutine(_diceRollCanvas.StartDiceRoll());
 
-        yield return _players[_currentPlayer].MovePlayerForward(_currentDiceNumber);
+        yield return StartCoroutine(_players[_currentPlayer].MovePlayerForward(_currentDiceNumber));
 
         yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(PlayerEvents.Question));
 
@@ -199,12 +204,32 @@ public class GameController : MonoBehaviour
         
         if (!_questionShower.CurrentResult)
         {
-            yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(PlayerEvents.Errou));
-            yield return _players[_currentPlayer].MovePlayerBackWards(_currentDiceNumber);
+            PlayerEvents evento = PlayerEvents.Errou;
+            int goBackSpaces = 1;
+            if (_players[_currentPlayer].PowerUp == PowerUps.ErrouX2)
+            {
+                evento = PlayerEvents.ErrouX2;
+                goBackSpaces = 2;
+            }
+            
+            yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(evento));
+            
+            yield return StartCoroutine(_players[_currentPlayer].MovePlayerBackWards(goBackSpaces));
         }
         else
         {
-            yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(PlayerEvents.Acertou));
+            PlayerEvents evento = PlayerEvents.Acertou;
+            if (_players[_currentPlayer].PowerUp == PowerUps.AcertouX2)
+            {
+                evento = PlayerEvents.AcertouX2;
+            }
+            
+            yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(evento));
+
+            if (evento == PlayerEvents.AcertouX2)
+            {
+                yield return StartCoroutine(_players[_currentPlayer].MovePlayerForward(_currentDiceNumber));
+            }
         }
 
         _playerFollowCam.Priority = 0;
