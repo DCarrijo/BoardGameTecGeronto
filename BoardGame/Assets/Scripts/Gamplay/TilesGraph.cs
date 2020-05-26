@@ -127,7 +127,7 @@ public class TilesGraph : MonoBehaviour
 
     public void SetRandomPowerUp()
     {
-        if (Random.RandomRange(0f, 1f) > _powerUpPropbability)
+        if (Random.Range(0f, 1f) > _powerUpPropbability)
         {
             Powerup = (PowerUps)Random.Range(1, 4);
         }

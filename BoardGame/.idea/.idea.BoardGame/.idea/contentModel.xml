@@ -551,6 +551,7 @@
             <e p="QuestionSaver.cs" t="Include" />
             <e p="ShowQuestion.cs" t="Include" />
           </e>
+          <e p="SceneController.cs" t="Include" />
           <e p="SimpleCameraController.cs" t="Include" />
           <e p="ThrowDice.cs" t="Include" />
           <e p="Tools" t="Include">
@@ -563,6 +564,7 @@
             <e p="MainMenu.cs" t="Include" />
             <e p="OptionsMenu.cs" t="Include" />
             <e p="PauseMenu.cs" t="Include" />
+            <e p="VictoryScreen.cs" t="Include" />
           </e>
           <e p="VFX" t="Include">
             <e p="VfxEventListener.cs" t="Include" />

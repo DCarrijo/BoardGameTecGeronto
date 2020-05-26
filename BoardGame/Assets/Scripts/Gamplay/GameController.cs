@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.VFX;
 using Cinemachine;
 using System.Linq;
+using TMPro;
 using ToonyColorsPro.ShaderGenerator;
 using UnityEngine.UIElements;
 
@@ -46,6 +47,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private VisualEffect _fireworks;
 
     [SerializeField] private CinemachineVirtualCamera _playerFollowCam;
+
+    [SerializeField] private VictoryScreen _winScene;
 
     private void Awake()
     {
@@ -117,8 +120,6 @@ public class GameController : MonoBehaviour
 
             foreach (var t in tile.GetConnectedTile())
             {
-                t.SetRandomPowerUp();
-                
                 tilesGraphs.Enqueue(t);
 
                 if (!tilesQueue.Contains(t))
@@ -153,6 +154,11 @@ public class GameController : MonoBehaviour
         }
         
         _firstTile.ArrangePlayersInTile();
+
+        foreach (var tile in TilesGraph.AllTiles)
+        {
+            tile.SetRandomPowerUp();
+        }
         
         _mapSetup = true;
     }
@@ -175,10 +181,10 @@ public class GameController : MonoBehaviour
 
         } while (!CheckVictory(_players[_currentPlayer]));
         
-        Debug.Log(_currentPlayer + " Has won!");
-
         _fireworks.gameObject.transform.position = _players[_currentPlayer].PlayerSpaceShip.transform.position;
         _fireworks.Play();
+        
+        _winScene.SetWin(_currentPlayer);
 
         yield return null;
     }

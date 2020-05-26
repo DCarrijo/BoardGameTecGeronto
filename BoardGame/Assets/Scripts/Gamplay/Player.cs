@@ -85,7 +85,7 @@ public class Player
         
         PlayerComps.StartTurbo();
         
-        CurentTile.CurrentPlayers.Add(this);
+        CurentTile.CurrentPlayers.Remove(this);
         CurentTile.ArrangePlayersInTile();
         
         for (int i = 0; i < spaces; i++)

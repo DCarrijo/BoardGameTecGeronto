@@ -259,11 +259,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 525888360, guid: 2b215f61f0e792d4c826636037ec1593, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 525888360, guid: 2b215f61f0e792d4c826636037ec1593, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 525888360, guid: 2b215f61f0e792d4c826636037ec1593, type: 3}
       propertyPath: _trailEffects.Array.size
