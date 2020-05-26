@@ -9,6 +9,7 @@ public class ShowQuestion : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _question;
     [SerializeField] private TextMeshProUGUI[] _answers;
+    [SerializeField] private Button[] _buttons;
     [SerializeField] private TextMeshProUGUI _categorie;
 
     private int _rightAnswerIndex = -1;
@@ -17,14 +18,21 @@ public class ShowQuestion : MonoBehaviour
 
     public bool CurrentResult { get; private set; } = false;
 
-    public void StartQuestion(Question question)
+    public void StartQuestion(Question question, bool hasPowerUp = false)
     {
-        SetupQuestion(question);
+        SetupQuestion(question, hasPowerUp);
         this.gameObject.SetActive(true);
     }
     
-    private void SetupQuestion(Question question)
+    private void SetupQuestion(Question question, bool hasPowerUp)
     {
+        bool hasUsedPowerUp = false;
+
+        foreach (var button in _buttons)
+        {
+            button.interactable = true;
+        }
+        
         _question.text = question.QuestionText;
         _categorie.text = question.QuestionCategory.ToString();
 
@@ -36,11 +44,22 @@ public class ShowQuestion : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             if (i == _rightAnswerIndex) continue;
-            
+
             int aux = Random.Range(0, wrongAnswers.Count);
             _answers[i].text = wrongAnswers[aux];
             wrongAnswers.RemoveAt(aux);
+            
+            if (hasPowerUp && !hasUsedPowerUp)
+            {
+                if (Random.Range(0.0f, 1.0f) > 0.3f)
+                {
+                    hasUsedPowerUp = true;
+                    _buttons[aux].interactable = false;
+                }
+            }
         }
+        
+        
     }
 
     public void CheckAnswer(int index)

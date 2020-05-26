@@ -30,6 +30,7 @@ public class TilesGraph : MonoBehaviour
     public PowerUps Powerup { get; private set; } = PowerUps.Null;
 
     public bool HasMultipleRoutes { get => _forwardConnections.Count > 1; }
+    public bool HasMultipleRoutesBackwards { get => _backwardsConnections.Count > 1; }
     
     public TileManager TileManager { get; private set; }
 

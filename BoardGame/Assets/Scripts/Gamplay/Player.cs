@@ -90,7 +90,7 @@ public class Player
         
         for (int i = 0; i < spaces; i++)
         {
-            TilesGraph nextTile = CurentTile.GetConnectedTile(LastRouteTaken, ConnectionType.backward);
+            TilesGraph nextTile = CurentTile.GetConnectedTile(CurentTile.HasMultipleRoutesBackwards ? LastRouteTaken : 0, ConnectionType.backward);
             yield return new DOTweenCYInstruction.WaitForCompletion(RotatePlayerSpaceShip(nextTile.transform));
             yield return new DOTweenCYInstruction.WaitForCompletion(MovePlayerToTile(nextTile));
         }

@@ -198,14 +198,17 @@ public class GameController : MonoBehaviour
         yield return StartCoroutine(_players[_currentPlayer].MovePlayerForward(_currentDiceNumber));
 
         yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(PlayerEvents.Question));
+        
+        Debug.Log("Current tile power up" + _players[_currentPlayer].PowerUp);
 
-        _questionShower.StartQuestion(_players[_currentPlayer].CurentTile.TileManager.GetQuestion());
+        _questionShower.StartQuestion(_players[_currentPlayer].CurentTile.TileManager.GetQuestion(), _players[_currentPlayer].PowerUp == PowerUps.EliminaRespostaErrada);
         yield return new WaitUntil(()=>_questionShower.gameObject.activeInHierarchy == false);
         
         if (!_questionShower.CurrentResult)
         {
             PlayerEvents evento = PlayerEvents.Errou;
             int goBackSpaces = 1;
+            
             if (_players[_currentPlayer].PowerUp == PowerUps.ErrouX2)
             {
                 evento = PlayerEvents.ErrouX2;
@@ -223,7 +226,7 @@ public class GameController : MonoBehaviour
             {
                 evento = PlayerEvents.AcertouX2;
             }
-            
+
             yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(evento));
 
             if (evento == PlayerEvents.AcertouX2)
