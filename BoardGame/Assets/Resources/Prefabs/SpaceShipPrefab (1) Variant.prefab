@@ -474,7 +474,7 @@ PrefabInstance:
     - target: {fileID: 607788190357492400, guid: a0f88f7ff4000d54182a3aff2e031413,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 757478300040561562, guid: a0f88f7ff4000d54182a3aff2e031413,
         type: 3}
@@ -584,7 +584,7 @@ PrefabInstance:
     - target: {fileID: 8970000038168838913, guid: a0f88f7ff4000d54182a3aff2e031413,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f88f7ff4000d54182a3aff2e031413, type: 3}
@@ -614,7 +614,7 @@ PrefabInstance:
     - target: {fileID: 607788190357492400, guid: a0f88f7ff4000d54182a3aff2e031413,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 757478300040561562, guid: a0f88f7ff4000d54182a3aff2e031413,
         type: 3}
@@ -724,7 +724,7 @@ PrefabInstance:
     - target: {fileID: 8970000038168838913, guid: a0f88f7ff4000d54182a3aff2e031413,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f88f7ff4000d54182a3aff2e031413, type: 3}
@@ -856,6 +856,11 @@ PrefabInstance:
       propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.data[1].m_Value.key1.g
       value: 1.1450981
       objectReference: {fileID: 0}
+    - target: {fileID: 4840562157183629939, guid: d46cdb5dbf2dade4ab8180475cfcc8f6,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[4].m_Value
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46cdb5dbf2dade4ab8180475cfcc8f6, type: 3}
 --- !u!2083052967 &1802647787938369439 stripped
@@ -986,6 +991,11 @@ PrefabInstance:
       propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.data[1].m_Value.key1.g
       value: 1.1450981
       objectReference: {fileID: 0}
+    - target: {fileID: 4840562157183629939, guid: d46cdb5dbf2dade4ab8180475cfcc8f6,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[4].m_Value
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46cdb5dbf2dade4ab8180475cfcc8f6, type: 3}
 --- !u!2083052967 &1802647786910826618 stripped
@@ -1014,7 +1024,7 @@ PrefabInstance:
     - target: {fileID: 607788190357492400, guid: a0f88f7ff4000d54182a3aff2e031413,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 757478300040561562, guid: a0f88f7ff4000d54182a3aff2e031413,
         type: 3}
@@ -1124,7 +1134,7 @@ PrefabInstance:
     - target: {fileID: 8970000038168838913, guid: a0f88f7ff4000d54182a3aff2e031413,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f88f7ff4000d54182a3aff2e031413, type: 3}
@@ -1255,6 +1265,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.data[1].m_Value.key1.g
       value: 1.1450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 4840562157183629939, guid: d46cdb5dbf2dade4ab8180475cfcc8f6,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[4].m_Value
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46cdb5dbf2dade4ab8180475cfcc8f6, type: 3}

@@ -138,9 +138,9 @@ VisualEffect:
         m_Overridden: 1
       - m_Value:
           serializedVersion: 2
-          key0: {r: 2.9960785, g: 0.03137255, b: 0, a: 1}
+          key0: {r: 2.9960785, g: 0, b: 0, a: 1}
           key1: {r: 2.9960785, g: 1.1450981, b: 0, a: 1}
-          key2: {r: 1, g: 0.97321427, b: 0, a: 0.39215687}
+          key2: {r: 1, g: 0.97321427, b: 0, a: 0}
           key3: {r: 0, g: 0, b: 0, a: 0}
           key4: {r: 0, g: 0, b: 0, a: 0}
           key5: {r: 0, g: 0, b: 0, a: 0}
@@ -156,7 +156,7 @@ VisualEffect:
           ctime7: 0
           atime0: 0
           atime1: 32768
-          atime2: 58982
+          atime2: 65535
           atime3: 65535
           atime4: 0
           atime5: 0
@@ -164,7 +164,7 @@ VisualEffect:
           atime7: 0
           m_Mode: 0
           m_NumColorKeys: 3
-          m_NumAlphaKeys: 4
+          m_NumAlphaKeys: 3
         m_Name: ColorGradientBeamTrail
         m_Overridden: 1
     m_NamedObject:
