@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7039607714814842644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -182,8 +182,8 @@ VisualEffect:
       m_Array:
       - m_Value:
           serializedVersion: 2
-          key0: {r: 1, g: 1, b: 1, a: 1}
-          key1: {r: 1, g: 1, b: 1, a: 1}
+          key0: {r: 1.4142135, g: 1.031544, b: 0, a: 1}
+          key1: {r: 1, g: 0.8950032, b: 0, a: 1}
           key2: {r: 0, g: 0, b: 0, a: 0}
           key3: {r: 0, g: 0, b: 0, a: 0}
           key4: {r: 0, g: 0, b: 0, a: 0}
@@ -207,14 +207,14 @@ VisualEffect:
           atime6: 0
           atime7: 0
           m_Mode: 0
-          m_NumColorKeys: 3
+          m_NumColorKeys: 2
           m_NumAlphaKeys: 3
         m_Name: GradientColorX
         m_Overridden: 1
       - m_Value:
           serializedVersion: 2
-          key0: {r: 1, g: 1, b: 1, a: 1}
-          key1: {r: 1, g: 1, b: 1, a: 1}
+          key0: {r: 1.6992774, g: 0, b: 0.28469628, a: 1}
+          key1: {r: 0.9, g: 0.028235296, b: 0, a: 1}
           key2: {r: 0, g: 0, b: 0, a: 0}
           key3: {r: 0, g: 0, b: 0, a: 0}
           key4: {r: 0, g: 0, b: 0, a: 0}
@@ -238,14 +238,14 @@ VisualEffect:
           atime6: 0
           atime7: 0
           m_Mode: 0
-          m_NumColorKeys: 3
+          m_NumColorKeys: 2
           m_NumAlphaKeys: 3
         m_Name: GradientColorError
         m_Overridden: 1
       - m_Value:
           serializedVersion: 2
-          key0: {r: 1, g: 1, b: 1, a: 1}
-          key1: {r: 1, g: 1, b: 1, a: 1}
+          key0: {r: 1.6992774, g: 0, b: 0.28469628, a: 1}
+          key1: {r: 0.9, g: 0.028235296, b: 0, a: 1}
           key2: {r: 0, g: 0, b: 0, a: 0}
           key3: {r: 0, g: 0, b: 0, a: 0}
           key4: {r: 0, g: 0, b: 0, a: 0}
@@ -269,7 +269,7 @@ VisualEffect:
           atime6: 0
           atime7: 0
           m_Mode: 0
-          m_NumColorKeys: 3
+          m_NumColorKeys: 2
           m_NumAlphaKeys: 3
         m_Name: GradientColorAllCircles
         m_Overridden: 1
