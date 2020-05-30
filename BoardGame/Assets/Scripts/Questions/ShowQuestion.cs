@@ -11,22 +11,23 @@ public class ShowQuestion : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] _answers;
     [SerializeField] private Button[] _buttons;
     [SerializeField] private TextMeshProUGUI _categorie;
-
+    [SerializeField] private Button _shieldButton;
+    
     private int _rightAnswerIndex = -1;
 
     public Action<bool> OnAnswer;
 
     public bool CurrentResult { get; private set; } = false;
 
-    public void StartQuestion(Question question, bool hasPowerUp = false)
+    public void StartQuestion(Question question)
     {
-        SetupQuestion(question, hasPowerUp);
+        SetupQuestion(question);
         this.gameObject.SetActive(true);
     }
     
-    private void SetupQuestion(Question question, bool hasPowerUp)
+    private void SetupQuestion(Question question)
     {
-        bool hasUsedPowerUp = false;
+        _shieldButton.interactable = GameController.CurrentPlayer.HasShield;
 
         foreach (var button in _buttons)
         {
@@ -48,24 +49,34 @@ public class ShowQuestion : MonoBehaviour
             int aux = Random.Range(0, wrongAnswers.Count);
             _answers[i].text = wrongAnswers[aux];
             wrongAnswers.RemoveAt(aux);
-            
-            if (hasPowerUp && !hasUsedPowerUp)
-            {
-                if (Random.Range(0.0f, 1.0f) > 0.3f)
-                {
-                    hasUsedPowerUp = true;
-                    _buttons[aux].interactable = false;
-                }
-            }
         }
-        
-        
     }
+
 
     public void CheckAnswer(int index)
     {
         OnAnswer?.Invoke(index == _rightAnswerIndex);
         CurrentResult = (index == _rightAnswerIndex);
         this.gameObject.SetActive(false);
+    }
+
+    public void RemoveWrongAnswer()
+    {
+        if (GameController.CurrentPlayer.HasShield)
+        {
+            List<int> buttons = new List<int>();
+            for (int i = 0; i < 4; i++)
+            {
+                buttons.Add(i);
+            }
+
+            buttons.Remove(_rightAnswerIndex);
+
+            int chosenNumber = buttons[Random.Range(0, 3)];
+
+            _buttons[chosenNumber].interactable = false;
+            
+            GameController.CurrentPlayer.UsedShield();
+        }
     }
 }

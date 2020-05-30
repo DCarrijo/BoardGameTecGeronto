@@ -561,9 +561,11 @@
             <e p="SceneEssentialObjects.cs" t="Include" />
           </e>
           <e p="UI Scripts" t="Include">
+            <e p="GameplayOptions.cs" t="Include" />
             <e p="MainMenu.cs" t="Include" />
             <e p="OptionsMenu.cs" t="Include" />
             <e p="PauseMenu.cs" t="Include" />
+            <e p="ToggleCategorie.cs" t="Include" />
             <e p="VictoryScreen.cs" t="Include" />
           </e>
           <e p="VFX" t="Include">

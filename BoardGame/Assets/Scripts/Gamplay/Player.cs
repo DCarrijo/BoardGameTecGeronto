@@ -21,6 +21,7 @@ public class Player
     public int LastRouteTaken { get; private set; } = 0;
 
     public PowerUps PowerUp { get => this.CurentTile == null ? PowerUps.Null : CurentTile.Powerup; }
+    public bool HasShield { get; private set; }
 
     private PlayerParameters _playerParameters;
 
@@ -39,6 +40,8 @@ public class Player
         }
 
         this.PlayerComps = playerSpaceShip.GetComponent<PlayerComponents>();
+
+        HasShield = true;
     }
 
     public IEnumerator MovePlayerForward(int spaces)
@@ -122,5 +125,10 @@ public class Player
     private Tween RotatePlayerSpaceShip(Transform nextTile)
     {
         return PlayerSpaceShip.transform.DOLookAt(nextTile.position + (Vector3.up * _playerParameters.TileFloatHightMultiplier), _playerParameters.LookAtDuration).SetEase(_playerParameters.LookDirectionAnimationCurve);
+    }
+
+    public void UsedShield()
+    {
+        HasShield = false;
     }
 }

@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.VFX;
 using Cinemachine;
-using System.Linq;
-using TMPro;
-using ToonyColorsPro.ShaderGenerator;
-using UnityEngine.UIElements;
 
 public class GameController : MonoBehaviour
 {
@@ -49,6 +46,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera _playerFollowCam;
 
     [SerializeField] private VictoryScreen _winScene;
+
+    public static Player CurrentPlayer { get; private set; }
 
     private void Awake()
     {
@@ -133,15 +132,16 @@ public class GameController : MonoBehaviour
             yield return null;
         }
 
+        var auxCategories = _gameplayData.Categorias;
         int catCounter = 0;
         while (tilesQueue.Count > 0)
         {
-            if (catCounter >= _gameplayData.Categorias.Length)
+            if (catCounter >=  auxCategories.Length)
             {
                 catCounter = 0;
             }
 
-            tilesQueue.Dequeue().TileManager.SetTile(_gameplayData.Categorias[catCounter], _tileMaterials[catCounter], _glowMaterials[catCounter]);
+            tilesQueue.Dequeue().TileManager.SetTile(auxCategories[catCounter], _tileMaterials[catCounter], _glowMaterials[catCounter]);
             catCounter++;
         }
         
@@ -176,6 +176,8 @@ public class GameController : MonoBehaviour
         do
         {
             _currentPlayer = _currentPlayer >= _totalPlayerNumber - 1 ? 0 : _currentPlayer + 1;
+
+            CurrentPlayer = _players[_currentPlayer];
             
             yield return StartCoroutine(PlayRound());
 
@@ -204,10 +206,8 @@ public class GameController : MonoBehaviour
         yield return StartCoroutine(_players[_currentPlayer].MovePlayerForward(_currentDiceNumber));
 
         yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(PlayerEvents.Question));
-        
-        Debug.Log("Current tile power up" + _players[_currentPlayer].PowerUp);
 
-        _questionShower.StartQuestion(_players[_currentPlayer].CurentTile.TileManager.GetQuestion(), _players[_currentPlayer].PowerUp == PowerUps.EliminaRespostaErrada);
+        _questionShower.StartQuestion(_players[_currentPlayer].CurentTile.TileManager.GetQuestion());
         yield return new WaitUntil(()=>_questionShower.gameObject.activeInHierarchy == false);
         
         if (!_questionShower.CurrentResult)
