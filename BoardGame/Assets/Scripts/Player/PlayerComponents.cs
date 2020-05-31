@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.VFX;
 
 [System.Serializable]
@@ -14,7 +14,11 @@ public enum PlayerEvents
     AcertouX2,
     Errou,
     ErrouX2,
-    Question
+    Question,
+    Shield,
+    Shock,
+    PowerUp, 
+    PowerDown
 }
 
 public class PlayerComponents : SerializedMonoBehaviour
@@ -23,6 +27,9 @@ public class PlayerComponents : SerializedMonoBehaviour
     [SerializeField] private VisualEffect[] _turboEffects;
     
     [SerializeField] private Dictionary<PlayerEvents, GameObject> _vfxDictionary;
+
+    [SerializeField] private CinemachineVirtualCamera _personalCam;
+    [SerializeField] private DOTweenAnimation _cameraAnimation;
 
     private bool _canContinue = false;
     
@@ -72,8 +79,26 @@ public class PlayerComponents : SerializedMonoBehaviour
         yield return new WaitUntil(() => _canContinue);
     }
 
+    public void PlayShieldEffect()
+    {
+        _vfxDictionary[PlayerEvents.Shield].SetActive(true);
+    }
+    
+
     private void ParticleEnded()
     {
         _canContinue = true;
+    }
+
+    public void CloseUp()
+    {
+        _personalCam.Priority = 100;
+        _cameraAnimation.DORestart();
+    }
+
+    public void ReturnCam()
+    {
+        _personalCam.Priority = -2;
+        _cameraAnimation.DORewind();
     }
 }

@@ -538,6 +538,7 @@
           <e p="HonestyVerifier.cs" t="Include" />
           <e p="MaterialChooser.cs" t="Include" />
           <e p="Player" t="Include">
+            <e p="ListenOnAnswerEvent.cs" t="Include" />
             <e p="PlayerComponents.cs" t="Include" />
             <e p="PlayerParameters.cs" t="Include" />
           </e>
@@ -563,12 +564,14 @@
           <e p="UI Scripts" t="Include">
             <e p="GameplayOptions.cs" t="Include" />
             <e p="MainMenu.cs" t="Include" />
+            <e p="MinimapSlider.cs" t="Include" />
             <e p="OptionsMenu.cs" t="Include" />
             <e p="PauseMenu.cs" t="Include" />
             <e p="ToggleCategorie.cs" t="Include" />
             <e p="VictoryScreen.cs" t="Include" />
           </e>
           <e p="VFX" t="Include">
+            <e p="ParticleEventListener.cs" t="Include" />
             <e p="VfxEventListener.cs" t="Include" />
           </e>
         </e>

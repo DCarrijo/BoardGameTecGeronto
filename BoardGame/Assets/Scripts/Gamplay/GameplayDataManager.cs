@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
@@ -12,8 +11,12 @@ public class GameplayDataManager : ScriptableObject
 
     [SerializeField] [PreviewField(Height = 100)] private GameObject[] _playerPrefabs;
     
+    [SerializeField] [PreviewField(Height = 100)] private List<Sprite> _playerMiniMapImages;
+
     public GameObject[] PlayerPrefabs
     {
         get => _playerPrefabs;
-    } 
+    }
+    
+    public Sprite[] GetImages(int howMany) => _playerMiniMapImages.GetRange(0, howMany).ToArray();
 }

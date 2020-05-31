@@ -16,6 +16,7 @@ public class ShowQuestion : MonoBehaviour
     private int _rightAnswerIndex = -1;
 
     public Action<bool> OnAnswer;
+    public static Action OnAnswerCallBack;
 
     public bool CurrentResult { get; private set; } = false;
 
@@ -56,6 +57,7 @@ public class ShowQuestion : MonoBehaviour
     public void CheckAnswer(int index)
     {
         OnAnswer?.Invoke(index == _rightAnswerIndex);
+        OnAnswerCallBack?.Invoke();
         CurrentResult = (index == _rightAnswerIndex);
         this.gameObject.SetActive(false);
     }
@@ -64,6 +66,8 @@ public class ShowQuestion : MonoBehaviour
     {
         if (GameController.CurrentPlayer.HasShield)
         {
+            GameController.CurrentPlayer.PlayerComps.PlayShieldEffect();
+            
             List<int> buttons = new List<int>();
             for (int i = 0; i < 4; i++)
             {

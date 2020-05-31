@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be51912815496142bcf1ec946487e45, type: 3}
   m_Name: GameplayDataManager
   m_EditorClassIdentifier: 
-  PlayerCount: 4
+  PlayerCount: 2
   Categorias: 000000000600000002000000
   _playerPrefabs:
   - {fileID: 6562465370695920753, guid: b9147749e0622c144b6a1c2ea66aeed6, type: 3}
   - {fileID: 7521714994832642780, guid: fa14d04a154c536498d920229ed5e7b0, type: 3}
   - {fileID: 9157986199630345048, guid: a798c33badf235e47b0a3cbfebef9a48, type: 3}
   - {fileID: 142126308578914983, guid: bbde34142e5ff2f4a9c019c309f8be5d, type: 3}
+  _playerMiniMapImages:
+  - {fileID: -3651985353006509397, guid: 10ade0d02f34919469fe0e79588c9e9e, type: 3}
+  - {fileID: -3750789560746140640, guid: 10ade0d02f34919469fe0e79588c9e9e, type: 3}
+  - {fileID: -7180848047220181741, guid: 10ade0d02f34919469fe0e79588c9e9e, type: 3}
+  - {fileID: -972297921194005668, guid: 10ade0d02f34919469fe0e79588c9e9e, type: 3}

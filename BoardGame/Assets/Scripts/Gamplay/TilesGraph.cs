@@ -16,8 +16,7 @@ public enum PowerUps
 {
     Null = 0,
     AcertouX2, 
-    ErrouX2, 
-    EliminaRespostaErrada
+    ErrouX2
 }
 
 public class TilesGraph : MonoBehaviour
@@ -129,7 +128,7 @@ public class TilesGraph : MonoBehaviour
     {
         if (Random.Range(0f, 1f) > _powerUpPropbability)
         {
-            Powerup = (PowerUps)Random.Range(1, 4);
+            Powerup = (PowerUps)Random.Range(1, 3);
         }
         else
         {

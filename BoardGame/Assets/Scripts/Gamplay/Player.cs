@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.Remoting.Messaging;
 using Sirenix.Serialization;
 using UnityEngine;
@@ -26,8 +27,10 @@ public class Player
     private PlayerParameters _playerParameters;
 
     public static Action OnMultipleRouts;
+    
+    private GameController _gameController;
 
-    public Player(int playerId, GameObject playerSpaceShip, TilesGraph curentTile, PlayerParameters parameters)
+    public Player(int playerId, GameObject playerSpaceShip, TilesGraph curentTile, PlayerParameters parameters, GameController controller)
     {
         this.PlayerId = playerId;
         this.PlayerSpaceShip = playerSpaceShip;
@@ -42,6 +45,8 @@ public class Player
         this.PlayerComps = playerSpaceShip.GetComponent<PlayerComponents>();
 
         HasShield = true;
+
+        _gameController = controller;
     }
 
     public IEnumerator MovePlayerForward(int spaces)
@@ -94,8 +99,11 @@ public class Player
         for (int i = 0; i < spaces; i++)
         {
             TilesGraph nextTile = CurentTile.GetConnectedTile(CurentTile.HasMultipleRoutesBackwards ? LastRouteTaken : 0, ConnectionType.backward);
-            yield return new DOTweenCYInstruction.WaitForCompletion(RotatePlayerSpaceShip(nextTile.transform));
-            yield return new DOTweenCYInstruction.WaitForCompletion(MovePlayerToTile(nextTile));
+            if (nextTile != null)
+            {
+                yield return new DOTweenCYInstruction.WaitForCompletion(RotatePlayerSpaceShip(nextTile.transform));
+                yield return new DOTweenCYInstruction.WaitForCompletion(MovePlayerToTile(nextTile));
+            }
         }
         
         CurentTile.CurrentPlayers.Add(this);
@@ -104,6 +112,14 @@ public class Player
         PlayerComps.StopTurbo();
 
         FinishedMooving = true;
+    }
+
+    public float GetPercentageToWin()
+    {
+        var position = PlayerSpaceShip.transform.position;
+        float distanceToPlayer = (position - _gameController.FirstTilePosition).magnitude;
+        float totalDistance = distanceToPlayer + (position - _gameController.LastTilePosition).magnitude ;
+        return distanceToPlayer / totalDistance;
     }
 
     private Tween MovePlayerToTile(TilesGraph tile)

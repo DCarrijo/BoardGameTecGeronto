@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -17,6 +16,9 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private TilesGraph _firstTile = null;
     [SerializeField] private TilesGraph _lastTile = null;
+
+    public Vector3 FirstTilePosition => _firstTile.transform.position;
+    public Vector3 LastTilePosition => _lastTile.transform.position;
 
     [SerializeField] [AssetsOnly] private GameplayDataManager _gameplayData;
 
@@ -47,6 +49,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private VictoryScreen _winScene;
 
+    [SerializeField] private MinimapSlider _minimap;
+
     public static Player CurrentPlayer { get; private set; }
 
     private void Awake()
@@ -76,6 +80,8 @@ public class GameController : MonoBehaviour
         yield return StartCoroutine(SetupMap());
         yield return StartCoroutine(SetupQuestion());
         
+        MiniMapSetup();
+        
         yield return new WaitUntil(()=>_mapSetup && _playerSetup && _questionSetup);
 
         StartGame();
@@ -99,7 +105,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < _totalPlayerNumber; i++)
         {
             GameObject playerShip = Instantiate(_gameplayData.PlayerPrefabs[i]);
-            _players.Add(new Player(i, playerShip, _firstTile, _playerParameters));
+            _players.Add(new Player(i, playerShip, _firstTile, _playerParameters, this));
             yield return null;
         }
         
@@ -162,6 +168,12 @@ public class GameController : MonoBehaviour
         
         _mapSetup = true;
     }
+
+    private void MiniMapSetup()
+    {
+        var aux = _gameplayData.GetImages(_totalPlayerNumber);
+        _minimap.SetupSpaceShips(ref aux, _players.ToArray());
+    }
     
     private void StartGame()
     {
@@ -204,11 +216,25 @@ public class GameController : MonoBehaviour
         yield return StartCoroutine(_diceRollCanvas.StartDiceRoll());
 
         yield return StartCoroutine(_players[_currentPlayer].MovePlayerForward(_currentDiceNumber));
+        
+        if (_players[_currentPlayer].PowerUp == PowerUps.AcertouX2)
+        {
+            yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(PlayerEvents.PowerUp));
+        }
+        else if (_players[_currentPlayer].PowerUp == PowerUps.ErrouX2)
+        {
+            yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(PlayerEvents.PowerDown));
+        }
 
         yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(PlayerEvents.Question));
 
         _questionShower.StartQuestion(_players[_currentPlayer].CurentTile.TileManager.GetQuestion());
+        
+        _players[_currentPlayer].PlayerComps.CloseUp();
+        
         yield return new WaitUntil(()=>_questionShower.gameObject.activeInHierarchy == false);
+        
+        _players[_currentPlayer].PlayerComps.ReturnCam();
         
         if (!_questionShower.CurrentResult)
         {
@@ -220,7 +246,9 @@ public class GameController : MonoBehaviour
                 evento = PlayerEvents.ErrouX2;
                 goBackSpaces = 2;
             }
-            
+
+            yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(PlayerEvents.Shock));
+
             yield return StartCoroutine(_players[_currentPlayer].PlayerComps.PlayEffect(evento));
             
             yield return StartCoroutine(_players[_currentPlayer].MovePlayerBackWards(goBackSpaces));
