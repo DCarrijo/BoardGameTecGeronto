@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using UnityEditor.Rendering.Universal.ShaderGUI;
+﻿using System;
 using UnityEngine;
 
 [System.Serializable]
 public enum Categories
 {
+    NULL = -1,
     MOB = 0,    //mobilidade
     FIN,        //saude financeira
     SEG,        //seguranca
@@ -17,7 +14,7 @@ public enum Categories
     SEX,        //sexualidade
     ALI,        //alimentacao saudavel
     EDU,        //educacao ao longo da vida
-    CMV         //corpo em movimento
+    CMV,        //corpo em movimento
 }
 
 [System.Serializable]
@@ -36,6 +33,32 @@ public class Question
         this.WrongAnswer = wrongAnswer;
         this.QuestionCategory = questionCategory;
         this.QuestionId = questionId;
+    }
+
+    public Question(string question, string rightAnswer, string[] wrongAnswer, string questionCategoryString,
+        int questionId)
+    {
+        Categories cat = GetCategorie(questionCategoryString);
+        this.QuestionText = question;
+        this.RightAnswer = rightAnswer;
+        this.WrongAnswer = wrongAnswer;
+        this.QuestionId = questionId;
+        this.QuestionCategory = cat;
+    }
+
+    public static Categories GetCategorie(string categorie)
+    {
+        categorie.ToUpper();
+        Categories aux = Categories.NULL;
+        
+        foreach (var cat in Enum.GetNames(typeof(Categories)))
+        {
+            if (cat == categorie)
+            {
+                aux = (Categories)Enum.Parse(typeof(Categories), cat);
+            }
+        }
+        return aux;
     }
 
     public override string ToString()
